@@ -1,3 +1,6 @@
+var mongoose = require('mongoose');
+var bcrypt   = require('bcrypt-nodejs');
+
 var user = mongoose.Schema({
 
     local            : {
@@ -28,12 +31,12 @@ var user = mongoose.Schema({
 });
 
 // generate a hash for the password entered by the user
-userSchema.methods.generateHash = function(password) {
+user.methods.generateHash = function(password) {
     return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
 };
 
 // Check if the password entere is the same as the hashed one in store
-userSchema.methods.validPassword = function(password) {
+user.methods.validPassword = function(password) {
     return bcrypt.compareSync(password, this.local.password);
 };
 
