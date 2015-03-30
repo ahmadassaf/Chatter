@@ -24,8 +24,6 @@ define([
         'app.directives',
         'app.filters',
         'ngRoute',
-        'pascalprecht.translate',
-        'ui.router',
-        'ngUpload'
+        'ui.router'
     ]);
 });

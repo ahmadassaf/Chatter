@@ -3,7 +3,7 @@ module.exports = function(app, passport) {
 
     // The get request for the main home root which will render the index.ejs template
     app.get('/', function(req, res) {
-        res.render('index.ejs'); // load the index.ejs file
+        res.render('index.ejs', { message: req.flash('loginMessage')});
     });
 
     // The get request for the user registration page

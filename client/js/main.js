@@ -9,11 +9,9 @@ require.config({
         'angular'                 : '../lib/angular/angular',
         'angular-route'           : '../lib/angular-route/angular-route',
         'domReady'                : '../lib/requirejs-domready/domReady',
-        'angular-translate'       : '../lib/angular-translate/angular-translate',
         'angular-translate-static': '../lib/angular-translate-loader-static-files/angular-translate-loader-static-files.min',
-        'angular-cookies'         :'../lib/angular-cookies/angular-cookies',
-        'angular-ui-router'       :'../lib/angular-ui-router/release/angular-ui-router',
-        'angular-ngUpload'        :'../lib/ngUpload/ng-upload.min'
+        'angular-cookies'         : '../lib/angular-cookies/angular-cookies',
+        'angular-ui-router'       : '../lib/angular-ui-router/release/angular-ui-router'
     },
 
     /**
@@ -39,7 +37,6 @@ require.config({
     },
 
     deps: [
-        // kick start application... see bootstrap.js
         './bootstrap'
     ],
     urlArgs: "bust=" + (new Date()).getTime()

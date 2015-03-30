@@ -35,6 +35,8 @@ Following a set of best practices before, the folders are organized in the follo
             └── controllers
 ```
 
+We did not use any [Yeoman](http://yeoman.io) generators as what we want is a simple structure.
+
 ## Design Decisions:
 
 To better organize the front-end code, we are using [Require.js](http://requirejs.org/): It is a JavaScript file and module loader. It is optimized for in-browser use, but it can be used in other JavaScript environments, like Rhino and Node. It brings many advantages:
