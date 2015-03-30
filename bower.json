@@ -7,14 +7,13 @@
     "libs"
   ],
   "dependencies": {
-    "angular": "latest",
-    "angular-route": "latest",
-    "requirejs": "latest",
-    "requirejs-domready": "latest",
-    "angular-translate": "latest",
-    "angular-cookies":"latest",
-    "angular-ui-router":"latest",
-    "angular-translate-loader-static-files":"latest",
-    "ngUpload":"latest"
+    "angular"                              : "latest",
+    "angular-route"                        : "latest",
+    "requirejs"                            : "latest",
+    "requirejs-domready"                   : "latest",
+    "angular-translate"                    : "latest",
+    "angular-cookies"                      : "latest",
+    "angular-ui-router"                    : "latest",
+    "angular-translate-loader-static-files": "latest"
   }
 }
