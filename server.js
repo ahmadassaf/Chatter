@@ -35,6 +35,9 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
 
+// Add the roots file to be included
+require('./app/routes.js');
+
 // start the server and listen on the defined port
 app.listen(port);
 console.log('Chatter Application up and running on port: ' + port);
