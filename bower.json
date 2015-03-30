@@ -1,0 +1,20 @@
+{
+  "name": "Chatter",
+  "version": "0.1",
+  "main": "index.html",
+  "ignore": [
+    "**/.*",
+    "libs"
+  ],
+  "dependencies": {
+    "angular": "latest",
+    "angular-route": "latest",
+    "requirejs": "latest",
+    "requirejs-domready": "latest",
+    "angular-translate": "latest",
+    "angular-cookies":"latest",
+    "angular-ui-router":"latest",
+    "angular-translate-loader-static-files":"latest",
+    "ngUpload":"latest"
+  }
+}
