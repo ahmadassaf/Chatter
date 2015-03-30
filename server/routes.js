@@ -1,25 +1,40 @@
-var _  = require('underscore');
+// app/routes.js
+module.exports = function(app, passport) {
 
-var routes = [
-    {
-        path: '/*',
-        httpMethod: 'GET',
-        middleware: [function(req, res) {
-            res.render('index');
-        }]
-    }
-];
-
-module.exports = function(app) {
-    _.each(routes, function(route) {
-        var args = _.flatten([route.path, route.middleware]);
-
-        switch(route.httpMethod.toUpperCase()) {
-            case 'GET': app.get.apply(app, args); break;
-            case 'POST': app.post.apply(app, args); break;
-            case 'PUT': app.put.apply(app, args); break;
-            case 'DELETE': app.delete.apply(app, args); break;
-            default: throw new Error('Invalid HTTP method specified for route ' + route.path); break;
-        }
+    // The get request for the main home root which will render the index.ejs template
+    app.get('/', function(req, res) {
+        res.render('index.ejs'); // load the index.ejs file
     });
-}
+
+    // The get request for the user registration page
+    app.get('/register', function(req, res) {
+        // render the page and pass in any flash data if it exists
+        res.render('register.ejs', { message: req.flash('signupMessage') });
+    });
+
+    /* process the signup form when a post is issued from the resgistration page
+     * On success redirect to the profile page
+     * On failure stay at the registration page and show appropriate failure message
+     */
+    app.post('/register', passport.authenticate('signup', {
+        successRedirect : '/profile',
+        failureRedirect : '/register',
+        failureFlash : true
+    }));
+
+    // The get request for the logout function and send the user back to the homepage
+    app.get('/logout', function(req, res) {
+        req.logout();
+        res.redirect('/');
+    });
+
+    /* process the login form when a post is issued from the main page
+     * On success redirect to the profile page
+     * On failure stay at the main page and show appropriate failure message
+     */
+    app.post('/', passport.authenticate('login', {
+        successRedirect : '/profile',
+        failureRedirect : '/',
+        failureFlash : true
+    }));
+};
