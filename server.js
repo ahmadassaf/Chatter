@@ -22,7 +22,7 @@ mongoose.connect(configDB.url);
 
 // Set up Views related configurations (Template Enginer used and Views path)
 app.set('view engine', 'jade');
-//app.use(express.static(path.join(__dirname, 'client')));
+app.use(express.static(path.join(__dirname, 'client')));
 app.set('views', __dirname + '/client/views');
 
 // morgan is a HTTP request logger middleware for node.js to log the requests directly on the console

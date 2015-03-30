@@ -1,0 +1,35 @@
+doctype html
+html(lang='en')
+    head
+        meta(charset='utf-8')
+        title Chatter Application
+        link(rel='stylesheet', href='/css/main.css')
+        link(href="/components/bootstrap/css/bootstrap.min.css", rel="stylesheet")
+        link(href="/components/font-awesome/css/font-awesome.min.css", rel="stylesheet")
+
+    body(data-ng-cloak)
+
+    div(data-ng-controller="NavCtrl")
+        .navbar()
+            .navbar-inner
+                .container-fluid
+                    ul.nav.nav-tabs
+                        li(data-access-level='accessLevels.public', active-nav)
+                            a(href='/') Home
+                        li(data-access-level='accessLevels.public', active-nav)
+                            a(href='/login') Login
+                        li(data-access-level='accessLevels.public', active-nav)
+                            a(href='/register') Register
+                        li(data-access-level='accessLevels.user', active-nav)
+                            a(href='/home') Home
+                        li(data-access-level='accessLevels.user', active-nav)
+                            a(href='/profile') My profile
+                        li(data-access-level='accessLevels.user')
+                            a(href="", data-ng-click="logout()")
+                                | Log out
+                        div#userInfo.pull-right(data-access-level='accessLevels.user')
+                            | Welcome&nbsp;
+                            strong {{ user.username }}&nbsp;
+
+    .container(data-ui-view)
+    script(src='/lib/requirejs/require.js',data-main='/js/main.js')

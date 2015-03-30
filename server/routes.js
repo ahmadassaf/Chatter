@@ -1,15 +1,15 @@
 // app/routes.js
 module.exports = function(app, passport) {
 
-    // The get request for the main home root which will render the index.ejs template
+    // The get request for the main home root which will render the index.jade template
     app.get('/', function(req, res) {
-        res.render('index.ejs', { message: req.flash('loginMessage')});
+        res.render('index.jade', { message: req.flash('loginMessage')});
     });
 
     // The get request for the user registration page
     app.get('/register', function(req, res) {
         // render the page and pass in any flash data if it exists
-        res.render('register.ejs', { message: req.flash('signupMessage') });
+        res.render('register.jade', { message: req.flash('signupMessage') });
     });
 
     /* process the signup form when a post is issued from the resgistration page
@@ -24,7 +24,7 @@ module.exports = function(app, passport) {
 
     // The get request for the profile page
     app.get('/profile', checkLoggingStatus, function(req, res) {
-        res.render('profile.ejs', {
+        res.render('profile.jade', {
             user : req.user
         });
     });

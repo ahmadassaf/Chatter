@@ -7,7 +7,6 @@ define([
     'angular-route',
     'angular-cookies',
     'angular-ui-router',
-    'angular-ngUpload',
     './controllers/index',
     './directives/index',
     './filters/index',
