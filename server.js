@@ -25,7 +25,9 @@ app.use(cookieParser());
 // Used to parse information embedded in html forms
 app.use(bodyParser());
 
-app.set('view engine', 'ejs'); // set up ejs for templating
+// Set up Views related configurations (Template Enginer used and Views path)
+app.set('view engine', 'ejs');
+app.set('views', __dirname + '/client/views');
 
 // required for passport
 app.use(session({ secret: passportConfig.secret }));
