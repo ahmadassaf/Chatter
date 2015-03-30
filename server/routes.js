@@ -22,8 +22,16 @@ module.exports = function(app, passport) {
         failureFlash : true
     }));
 
+    // The get request for the profile page
+    app.get('/profile', checkLoggingStatus, function(req, res) {
+        res.render('profile.ejs', {
+            user : req.user
+        });
+    });
+
     // The get request for the logout function and send the user back to the homepage
     app.get('/logout', function(req, res) {
+        // logout is a passport.js function that will clear the session if exists and remove the req.user
         req.logout();
         res.redirect('/');
     });
@@ -38,3 +46,12 @@ module.exports = function(app, passport) {
         failureFlash : true
     }));
 };
+
+// Check if the passport.js has a valid user session to authenticate the user or send/keep the user at home
+function checkLoggingStatus(req, res, next) {
+    // A passport.js function that will check if the user has a valid session
+    if (req.isAuthenticated()) return next();
+
+    // if they aren't redirect them to the home page
+    res.redirect('/');
+}
