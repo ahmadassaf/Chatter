@@ -15,7 +15,6 @@ define([
     './appConfig'
 ], function (angular) {
     'use strict';
-
     return angular.module('app', [
         'ngCookies',
         'app.services',

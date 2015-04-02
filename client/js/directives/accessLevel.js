@@ -4,7 +4,7 @@ define(['./module'], function (directives) {
 
     // This will control the show/hide of elements based on the access level defined in the directive
 
-    directives.directive('accessLevel', ['auth', function (auth) {
+    directives.directive('accessLevel', ['authentication', function (auth) {
 	    return {
 	        restrict: 'A',
 	        link: function($scope, element, attrs) {

@@ -14,11 +14,12 @@
 
         The left-hand side specifies the name of the access level, and the right-hand side
         specifies what user roles have access to that access level. E.g. users with user role
-        'user' and 'admin' have access to the access level 'user'.
+        'user' have access to the access level 'user'.
          */
 
         accessLevels : {
             'public'        : "*",
+            'anon'          : ['public'],
             'user'          : ['user']
         }
 

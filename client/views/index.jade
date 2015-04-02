@@ -1,6 +1,7 @@
 doctype html
 html(lang='en')
     head
+        base(href='/')
         meta(charset='utf-8')
         title Chatter Application
         link(rel='stylesheet', href='/css/main.css')
@@ -9,15 +10,13 @@ html(lang='en')
 
     body(data-ng-cloak)
 
-    div(data-ng-controller="NavCtrl")
+    div(data-ng-controller="navigation")
         .navbar()
             .navbar-inner
                 .container-fluid
                     ul.nav.nav-tabs
                         li(data-access-level='accessLevels.public', active-nav)
                             a(href='/') Home
-                        li(data-access-level='accessLevels.public', active-nav)
-                            a(href='/login') Login
                         li(data-access-level='accessLevels.public', active-nav)
                             a(href='/register') Register
                         li(data-access-level='accessLevels.user', active-nav)
@@ -32,4 +31,5 @@ html(lang='en')
                             strong {{ user.username }}&nbsp;
 
     .container(data-ui-view)
+
     script(src='/lib/requirejs/require.js',data-main='/js/main.js')
