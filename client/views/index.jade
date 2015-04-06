@@ -8,19 +8,19 @@ html(lang='en')
         link(href="/components/bootstrap/css/bootstrap.min.css", rel="stylesheet")
         link(href="/components/font-awesome/css/font-awesome.min.css", rel="stylesheet")
 
-    body(data-ng-cloak)
+    body
 
     div(data-ng-controller="navigation")
         .navbar()
             .navbar-inner
                 .container-fluid
                     ul.nav.nav-tabs
-                        li(data-access-level='accessLevels.public', active-nav)
+                        li(data-access-level='accessLevels.anon', active-nav)
                             a(href='/') Home
-                        li(data-access-level='accessLevels.public', active-nav)
-                            a(href='/register') Register
                         li(data-access-level='accessLevels.user', active-nav)
-                            a(href='/home') Home
+                            a(href='/chat') Home
+                        li(data-access-level='accessLevels.anon', active-nav)
+                            a(href='/register') Register
                         li(data-access-level='accessLevels.user', active-nav)
                             a(href='/profile') My profile
                         li(data-access-level='accessLevels.user')
@@ -28,7 +28,7 @@ html(lang='en')
                                 | Log out
                         div#userInfo.pull-right(data-access-level='accessLevels.user')
                             | Welcome&nbsp;
-                            strong {{ user.username }}&nbsp;
+                            strong(ng-bind='user.username') &nbsp;
 
     .container(data-ui-view)
 

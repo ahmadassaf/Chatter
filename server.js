@@ -6,14 +6,13 @@ var morgan         = require('morgan');
 var cookieParser   = require('cookie-parser');
 var bodyParser     = require('body-parser');
 var session        = require('express-session');
-path      			   = require('path');
+var path      		 = require('path');
+var User           = require('./server/models/user.js');
 
 var configDB       = require('./configs/database.js');
 
 var app            = express();
 var port           = process.env.PORT || 8080;
-
-require('./configs/passport.js')(passport);
 
 // connect to our database with the url defined in the config file
 mongoose.connect(configDB.url);
@@ -32,6 +31,9 @@ app.use(cookieParser());
 // Used to parse information embedded in html forms
 app.use(bodyParser());
 
+
+app.use(session({ secret: "hfV!p7HNF$HYSETF8jBn" }));
+
 /*
 	The path of our passport object is important to note here
 	We will create it at the very beginning of the file with var passport = require('passport')
@@ -39,10 +41,12 @@ app.use(bodyParser());
 	Then we pass it to the server/routes.js file for it to be used in our routes.
  */
 
-app.use(session({ secret: "hfV!p7HNF$HYSETF8jBn" }));
+require('./configs/passport.js')(passport);
 app.use(passport.initialize());
 app.use(passport.session());
+
 app.use(flash());
+
 
 // Add the roots file to be included
 require('./server/routes.js')(app, passport);

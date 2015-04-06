@@ -30,8 +30,9 @@ define(['./app'], function (app) {
             }
         })
         .state('public.home', {
-            url: '/',
-            templateUrl: '/partials/login'
+            url        : '/',
+            templateUrl: '/partials/login',
+            controller : 'login'
         });
 
     $stateProvider
@@ -41,10 +42,6 @@ define(['./app'], function (app) {
             data: {
                 access: access.anon
             }
-        })
-        .state('anon.login', {
-            url        : '/login/',
-            templateUrl: '/partials/login'
         })
         .state('anon.register', {
             url: '/register/',
@@ -64,9 +61,9 @@ define(['./app'], function (app) {
                 access: access.user
             }
         })
-        .state('user.home', {
-            url        : '/home',
-            templateUrl: 'partials/home'
+        .state('user.chat', {
+            url        : '/chat/',
+            templateUrl: 'partials/chat'
         })
         .state('user.profile', {
             url        : '/profile/',
@@ -84,7 +81,7 @@ define(['./app'], function (app) {
         // Note: misnomer. This returns a query object, not a search string
         var path   = $location.path();
         var search = $location.search();
-        var params;
+        var params = [];
 
         // check to see if the path already ends in '/'
         if (path[path.length - 1] === '/') return;
@@ -93,7 +90,6 @@ define(['./app'], function (app) {
         if (Object.keys(search).length === 0) return path + '/';
 
         // Otherwise build the search string and return a `/?` prefix
-        params = [];
         angular.forEach(search, function(v, k){
             params.push(k + '=' + v);
         });
@@ -103,38 +99,33 @@ define(['./app'], function (app) {
     // Configure how the application deep linking paths are stored
     $locationProvider.html5Mode(true);
 
-    // Catch any error  (401, 403) sent from the server and redirect the user back to the login screen
+    // Catch any error  (403, etc.) sent from the server and redirect the user back to the login screen
     $httpProvider.interceptors.push(function($q, $location) {
         return {
             'responseError': function(response) {
-                if(response.status === 401 || response.status === 403) {
-                    $location.path('/login');
+                if(response.status === 403) {
+                    $location.path('/');
                 }
                 return $q.reject(response);
             }
         };
     });
 
-    }]).run(['$rootScope', '$state', 'authentication', function ($rootScope, $state, auth) {
+    }]).run(['$rootScope', '$state', 'authentication', function ($rootScope, $state, authentication) {
 
-    $rootScope.$on("$stateChangeStart", function (event, toState, toParams, fromState, fromParams) {
-        if (!auth.authorize(toState.data.access)) {
+        $rootScope.$on("$stateChangeStart", function (event, toState, toParams, fromState, fromParams) {
 
-            $rootScope.error = "Trying to access a route you don't have access to ?!";
-
-            event.preventDefault();
-
-            if(fromState.url === '^') {
-                if(auth.isLoggedIn()) {
-                    // If the user is logged in and authenticated then send him to his home, otherwise to a page not found 404
-                    auth.user ? $state.go('user.home') : $state.go('anon.404');
-                } else {
-                    // If the user is not logged in then send him to the login screen
-                    $rootScope.error = null;
-                    $state.go('anon.login');
-                }
+            if (!authentication.authorize(toState.data.access)) {
+                $rootScope.error = "Trying to access a route you don't have access to ?!";
+                event.preventDefault();
             }
-        }
+
+            /*
+            if (fromState.name === "" && authentication.isLoggedIn()) {
+                $state.go('user.chat');
+                event.preventDefault();
+            }
+            */
         });
     }]);
 });

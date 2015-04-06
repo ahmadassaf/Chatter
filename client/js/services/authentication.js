@@ -28,7 +28,6 @@ define(['./module'], function(services) {
                 if (user === undefined) {
                     user = currentUser;
                 }
-                console.log(user);
                 return user.role.title === userRoles.user.title;
             },
             register: function(user, success, error) {
@@ -54,8 +53,8 @@ define(['./module'], function(services) {
             },
 
             accessLevels: accessLevels,
-            userRoles: userRoles,
-            user: currentUser
+            userRoles   : userRoles,
+            user        : currentUser
         }
     });
 });

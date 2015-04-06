@@ -7,7 +7,7 @@ var accessLevels   = require('../client/js/routingConfig').accessLevels;
 module.exports = function(app, passport) {
 
     var authentication = require('./controllers/authentication')(passport);
-    console.log(authentication);
+
     var routes = [
         {
             path: '/partials/*',
@@ -20,10 +20,17 @@ module.exports = function(app, passport) {
         {
             path: '/register',
             httpMethod: 'POST',
-            middleware: [function (req, res, next) {
-                    authentication.register(req, res, next);
-                }
-            ]
+            middleware: [authentication.register]
+        },
+        {
+            path: '/logout',
+            httpMethod: 'POST',
+            middleware: [authentication.logout]
+        },
+        {
+            path: '/login',
+            httpMethod: 'POST',
+            middleware: [authentication.login]
         },
 
         // All other get requests should be handled by AngularJS's client-side routing system

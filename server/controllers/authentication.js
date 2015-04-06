@@ -15,10 +15,7 @@ module.exports = function(passport){
                     req.logIn(user, function(err) {
                         if (err) return next(err);
                         else {
-                            connectedUser = {
-                                "role": user.role,
-                                "username": user.username
-                            };
+                            connectedUser = { "role"    : user.role, "username": user.username };
                             req.session.connectedUser = connectedUser;
                             return res.send(200, connectedUser);
                         }
@@ -29,13 +26,30 @@ module.exports = function(passport){
         },
 
         login: function(req, res, next) {
+            passport.authenticate('login', function(err, user, info) {
+                if (err) {
+                    return next(err);
+                }
+                if (!user) {
+                    return res.send(401, info);
+                } else {
+                    req.logIn(user, function(err) {
+                        if (err) return next(err);
+                        else {
+                            connectedUser = { "role": user.role, "username": user.username };
+                            req.session.connectedUser = connectedUser;
+                            return res.send(200, connectedUser);
+                        }
+                    });
+                }
 
+            })(req, res, next);
         },
 
         logout: function(req, res) {
             req.session.connectedUser = null;
             req.logout();
-            res.send(200);
+            return res.send(200);
         }
     }
 
