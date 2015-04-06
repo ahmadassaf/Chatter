@@ -1,57 +1,98 @@
-// app/routes.js
+var _              = require('underscore');
+var path           = require('path')
+var authentication = require('./controllers/authentication')
+var userRoles      = require('../client/js/routingConfig').userRoles;
+var accessLevels   = require('../client/js/routingConfig').accessLevels;
+
+
 module.exports = function(app, passport) {
 
-    // The get request for the main home root which will render the index.jade template
-    app.get('/', function(req, res) {
-        res.render('index.jade', { message: req.flash('loginMessage')});
+    var routes = [
+        {
+            path: '/partials/*',
+            httpMethod: 'GET',
+            middleware: [function (req, res) {
+                var requestedView = path.join('./', req.url);
+                res.render(requestedView);
+            }]
+        },
+        {
+            path: '/register',
+            httpMethod: 'POST',
+            middleware: [function (req, res, next) {
+                  // generate the authenticate method and pass the req/res
+                  passport.authenticate('signup', function(err, user, info) {
+                    if (err) { return next(err); }
+                    if (!user) {
+                        return res.send(409, "User already exists");
+                    } else {
+                        req.logIn(user, function(err) {
+                            if(err) return next(err);
+                            else {
+                                connectedUser             = { "role": user.role, "username": user.username };
+                                req.session.connectedUser = connectedUser;
+                                return res.send(200, connectedUser);
+                            }
+                        });
+                    }
+
+                  })(req, res, next);
+                }
+            ]
+        },
+
+        // All other get requests should be handled by AngularJS's client-side routing system
+        {
+            path: '/*',
+            httpMethod: 'GET',
+            middleware: [function(req, res) {
+                var role = userRoles.public, username = '';
+
+                if(req.session.connectedUser) {
+                    role     = req.session.connectedUser.role;
+                    username = req.session.connectedUser.username;
+                }
+                res.cookie('user', JSON.stringify({
+                    'username': username,
+                     'role': role
+                }));
+                res.render('index');
+            }]
+        }
+    ];
+
+    _.each(routes, function(route) {
+        route.middleware.unshift(isLoggedIn);
+        var args = _.flatten([route.path, route.middleware]);
+
+        switch(route.httpMethod.toUpperCase()) {
+            case 'GET':
+                app.get.apply(app, args);
+                break;
+            case 'POST':
+                app.post.apply(app, args);
+                break;
+            case 'PUT':
+                app.put.apply(app, args);
+                break;
+            case 'DELETE':
+                app.delete.apply(app, args);
+                break;
+            default:
+                throw new Error('Invalid HTTP method specified for route ' + route.path);
+                break;
+        }
     });
 
-    // The get request for the user registration page
-    app.get('/register', function(req, res) {
-        // render the page and pass in any flash data if it exists
-        res.render('register.jade', { message: req.flash('signupMessage') });
-    });
+    // Check if the passport.js has a valid user session to authenticate the user or send/keep the user at home
+    function isLoggedIn(req, res, next) {
 
-    /* process the signup form when a post is issued from the resgistration page
-     * On success redirect to the profile page
-     * On failure stay at the registration page and show appropriate failure message
-     */
-    app.post('/register', passport.authenticate('signup', {
-        successRedirect : '/profile',
-        failureRedirect : '/register',
-        failureFlash : true
-    }));
+        role = !req.session.connectedUser ? userRoles.public : userRoles.user;
 
-    // The get request for the profile page
-    app.get('/profile', checkLoggingStatus, function(req, res) {
-        res.render('profile.jade', {
-            user : req.user
-        });
-    });
+        var method      = req.route.stack[0].method;
+        var accessLevel = _.findWhere(routes, { path: req.route.path, httpMethod: method.toUpperCase() }).accessLevel || accessLevels.public;
 
-    // The get request for the logout function and send the user back to the homepage
-    app.get('/logout', function(req, res) {
-        // logout is a passport.js function that will clear the session if exists and remove the req.user
-        req.logout();
-        res.redirect('/');
-    });
-
-    /* process the login form when a post is issued from the main page
-     * On success redirect to the profile page
-     * On failure stay at the main page and show appropriate failure message
-     */
-    app.post('/', passport.authenticate('login', {
-        successRedirect : '/profile',
-        failureRedirect : '/',
-        failureFlash : true
-    }));
-};
-
-// Check if the passport.js has a valid user session to authenticate the user or send/keep the user at home
-function checkLoggingStatus(req, res, next) {
-    // A passport.js function that will check if the user has a valid session
-    if (req.isAuthenticated()) return next();
-
-    // if they aren't redirect them to the home page
-    res.redirect('/');
+        if(!(accessLevel.bitMask & role.bitMask)) return res.send(403);
+        return next();
+    }
 }
