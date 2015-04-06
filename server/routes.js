@@ -1,12 +1,13 @@
 var _              = require('underscore');
 var path           = require('path')
-var authentication = require('./controllers/authentication')
 var userRoles      = require('../client/js/routingConfig').userRoles;
 var accessLevels   = require('../client/js/routingConfig').accessLevels;
 
 
 module.exports = function(app, passport) {
 
+    var authentication = require('./controllers/authentication')(passport);
+    console.log(authentication);
     var routes = [
         {
             path: '/partials/*',
@@ -20,23 +21,7 @@ module.exports = function(app, passport) {
             path: '/register',
             httpMethod: 'POST',
             middleware: [function (req, res, next) {
-                  // generate the authenticate method and pass the req/res
-                  passport.authenticate('signup', function(err, user, info) {
-                    if (err) { return next(err); }
-                    if (!user) {
-                        return res.send(409, "User already exists");
-                    } else {
-                        req.logIn(user, function(err) {
-                            if(err) return next(err);
-                            else {
-                                connectedUser             = { "role": user.role, "username": user.username };
-                                req.session.connectedUser = connectedUser;
-                                return res.send(200, connectedUser);
-                            }
-                        });
-                    }
-
-                  })(req, res, next);
+                    authentication.register(req, res, next);
                 }
             ]
         },
