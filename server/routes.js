@@ -3,10 +3,10 @@ var path           = require('path')
 var userRoles      = require('../client/js/routingConfig').userRoles;
 var accessLevels   = require('../client/js/routingConfig').accessLevels;
 
-
-module.exports = function(app, passport) {
+module.exports = function(app, passport, io) {
 
     var authentication = require('./controllers/authentication')(passport);
+    var chat           = require('./controllers/chat')(io);
 
     var routes = [
         {
