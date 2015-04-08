@@ -3,10 +3,11 @@ var mongoose     = require('mongoose');
 var passport     = require('passport');
 var socket       = require('socket.io')
 
+var options      = require('./options.json')
 var configDB     = require('./configs/database.js');
 
 var app          = express();
-var port         = process.env.PORT || 8080;
+var port         = process.env.PORT || options.port;
 
 // connect to our database with the url defined in the config file
 mongoose.connect(configDB.url);
