@@ -63,7 +63,8 @@ define(['./app'], function (app) {
         })
         .state('user.chat', {
             url        : '/chat/',
-            templateUrl: 'partials/chat'
+            templateUrl: 'partials/chat',
+            controller : 'chat'
         })
         .state('user.profile', {
             url        : '/profile/',

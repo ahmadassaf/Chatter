@@ -11,7 +11,8 @@ require.config({
         'domReady'                : '../lib/requirejs-domready/domReady',
         'angular-translate-static': '../lib/angular-translate-loader-static-files/angular-translate-loader-static-files.min',
         'angular-cookies'         : '../lib/angular-cookies/angular-cookies',
-        'angular-ui-router'       : '../lib/angular-ui-router/release/angular-ui-router'
+        'angular-ui-router'       : '../lib/angular-ui-router/release/angular-ui-router',
+        'socketio'                : '../lib/socket.io-client/socket.io'
     },
 
     /**
@@ -23,9 +24,6 @@ require.config({
             exports: 'angular'
         },
         'angular-route': {
-            deps: ['angular']
-        },
-        'angular-translate': {
             deps: ['angular']
         },
         'angular-cookies': {

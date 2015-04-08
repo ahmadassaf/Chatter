@@ -6,11 +6,4 @@
  * which avails each controller of, for example, the `config` constants object.
 */
 
-define([
-	   './register',
-     './login',
-     './navigation',
-    // './home',
-    // './userHome',
-    // './profile'
-], function () {});
+define([ './register', './login', './navigation', './chat'], function () {});
