@@ -3,58 +3,12 @@
         .col-md-9
           .panel.panel-primary
             .panel-body
-              ul.chat
-                li.left.clearfix
-                  span.chat-img.pull-left
-                    img.img-circle(src='http://placehold.it/50/55C1E7/fff&text=U', alt='User Avatar')
-                  .chat-body.clearfix
-                    .header
-                      strong.primary-font Jack Sparrow
-                      small.pull-right.text-muted
-                        span.glyphicon.glyphicon-time
-                        | 12 mins ago
-                    p
-                      | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare
-                      | dolor, quis ullamcorper ligula sodales.
-                li.right.clearfix
-                  span.chat-img.pull-right
-                    img.img-circle(src='http://placehold.it/50/FA6F57/fff&text=ME', alt='User Avatar')
-                  .chat-body.clearfix
-                    .header
-                      small.text-muted
-                        span.glyphicon.glyphicon-time
-                        | 13 mins ago
-                      strong.pull-right.primary-font Bhaumik Patel
-                    p
-                      | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare
-                      | dolor, quis ullamcorper ligula sodales.
-                li.left.clearfix
-                  span.chat-img.pull-left
-                    img.img-circle(src='http://placehold.it/50/55C1E7/fff&text=J', alt='User Avatar')
-                  .chat-body.clearfix
-                    .header
-                      strong.primary-font Jack Sparrow
-                      small.pull-right.text-muted
-                        span.glyphicon.glyphicon-time
-                        | 14 mins ago
-                    p
-                      | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare
-                      | dolor, quis ullamcorper ligula sodales.
-                li.right.clearfix
-                  span.chat-img.pull-right
-                    img.img-circle(src='http://placehold.it/50/FA6F57/fff&text=AA', alt='User Avatar')
-                  .chat-body.clearfix
-                    .header
-                      small.text-muted
-                        span.glyphicon.glyphicon-time
-                        | 15 mins ago
-                      strong.pull-right.primary-font Bhaumik Patel
-                    p
-                      | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare
-                      | dolor, quis ullamcorper ligula sodales.
+              ul.chat(id="chatBox")
+                li.clearfix(data-ng-repeat='message in messages', data-ng-class='orientation')
+                  include message
             .panel-footer
               .input-group
-                input#btn-input.form-control.input-sm(type='text', placeholder='Type your message here...')
+                input#btn-input.form-control.input-sm(type='text', placeholder='Type your message here...' data-ng-model="message")
                 span.input-group-btn
-                  button#btn-chat.btn.btn-warning.btn-sm
+                  button#btn-chat.btn.btn-warning.btn-sm(data-ng-click="sendMessage()")
                     | Send

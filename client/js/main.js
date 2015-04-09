@@ -12,7 +12,8 @@ require.config({
         'angular-translate-static': '../lib/angular-translate-loader-static-files/angular-translate-loader-static-files.min',
         'angular-cookies'         : '../lib/angular-cookies/angular-cookies',
         'angular-ui-router'       : '../lib/angular-ui-router/release/angular-ui-router',
-        'socketio'                : '../lib/socket.io-client/socket.io'
+        'socketio'                : '../lib/socket.io-client/socket.io',
+        'underscore'              : '../lib/underscore/underscore'
     },
 
     /**
