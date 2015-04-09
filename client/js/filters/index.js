@@ -4,4 +4,4 @@
  * properly referenced in one of the module dependencies in the array.
  */
 
-define(['./interpolate'], function () {});
+define(['./interpolate', './orient'], function () {});

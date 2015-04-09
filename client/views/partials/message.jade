@@ -1,10 +1,10 @@
-span.chat-img(data-ng-class='"pull-" + message.orientation')
+span.chat-img(data-ng-class='message.sender | orient')
   img.img-circle(data-ng-src='http://placehold.it/50/FA6F57/fff&text={{message.initials}}', alt='User Avatar')
 .chat-body.clearfix
   .header
     small.text-muted
       span.glyphicon.glyphicon-time
       | 13 mins ago
-    strong.primary-font(data-ng-class='"pull-" + message.orientation') {{message.username}}
+    strong.primary-font(data-ng-class='message.sender | orient') {{message.username}}
   p
     | {{message.message}}

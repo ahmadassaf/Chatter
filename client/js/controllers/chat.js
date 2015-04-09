@@ -34,15 +34,12 @@ define(['./module', 'underscore'], function(controllers, _) {
         $scope.sendMessage = function() {
             // Prepare the message object to be sent to the server and rendered on the frontend
             var message = {
-                orientation : 'left',
-                username    : user.username,
+                sender      : user.username,
                 initials    : user.username.replace(/\W*(\w)\w*/g, '$1').toUpperCase(),
                 message     : $scope.message
             };
             // Emit the message to the server side
             io.emit('chat', message);
-            // Change the orientation for the local change
-            message.orientation = 'right';
             $scope.messages.push(message);
 
             $scope.message = '';
