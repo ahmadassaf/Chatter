@@ -28,7 +28,7 @@ define(['./module', 'underscore'], function(controllers, _) {
          });
 
         socket.on('user:message', function(message){
-            console.log(message.user.username + " sent: " + message.message);
+            $scope.messages.push(message);
         });
 
         $scope.sendMessage = function() {
@@ -41,6 +41,8 @@ define(['./module', 'underscore'], function(controllers, _) {
             };
             // Emit the message to the server side
             io.emit('chat', message);
+            // Change the orientation for the local change
+            message.orientation = 'right';
             $scope.messages.push(message);
 
             $scope.message = '';

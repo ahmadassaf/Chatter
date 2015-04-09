@@ -26,7 +26,6 @@ module.exports = function(io) {
 
 		socket.on('chat', function(message){
 			socket.broadcast.emit('user:message', message);
-			console.log(message);
 		});
 
 		socket.emit('init', {'connectedUsers' : connectedUsers});
