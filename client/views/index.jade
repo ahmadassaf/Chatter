@@ -14,10 +14,13 @@ html(lang='en')
                   span.logo
                     | Chatter.me
                     e Connecting People
-                  .social_header
-                    a(href='https://twitter.com/ahmadaassaf', target='_blank')
-                      span.fa.fa-twitter
-                      | Follow @ahmadaassaf
+                  .social_header(data-ng-controller="navigation")
+                    a(data-access-level='accessLevels.user', active-nav)
+                      span.fa.fa-user
+                      | Welcome&nbsp;
+                      strong(ng-bind='user.username') &nbsp;
+                    a.logout(href="", data-ng-click="logout()" data-access-level='accessLevels.user', active-nav)
+                      | Log out
 
             .container(data-ui-view)
 
