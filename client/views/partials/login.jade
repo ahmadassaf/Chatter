@@ -1,30 +1,20 @@
-.alert.alert-danger(ng-show="showError" || false)
-        H3 {{err}}
-form.form-horizontal(ng-submit="login()", name="loginForm", role="form")
-    .form-group
-        label.control-label.col-sm-2(for="email") Email
-        .col-sm-10
-            input.form-control(type="email", data-ng-model="email", placeholder="Email", name="email", required autofocus)
-    .form-group
-        label.control-label.col-sm-2(for="password") Password
-        .col-sm-10
-            input.form-control(type="password", data-ng-model="password", placeholder="Password", name="password", required, data-ng-minlength="5", data-ng-maxlength="60")
-    .form-group
-        .col-sm-offset-2.col-sm-10
-            .checkbox
-                label(for="rememberme").checkbox
-                    input(type="checkbox", data-ng-model="rememberme", name="rememberme")
-                    | Remember me
-    .form-group
-        .col-sm-offset-2.col-sm-10
-            button.btn.btn-default(type="submit", data-ng-disabled="loginForm.$invalid") Log in
+.slogan
+  img.snarc_logo(src='https://cdn0.iconfinder.com/data/icons/ikooni-outline-free-basic/128/free-02-128.png')
+  h1
+    strong Chatter.me
+    | is a simple private chatroom built with
+    span Node.js
+    | ,
+    span Angular.js
+    |  and
+    span Express
 
-    .alert.alert-danger(ng-show="loginForm.$invalid && loginForm.$dirty")
-        strong Please correct the following errors:
-        ul
-            li(ng-show="loginForm.email.$error.required") Email is required
-            li(ng-show="loginForm.email.$error.email") Email is invalid
+.form-group.buttons
+    button.progress-button(type="button", data-ng-click="toggleModal()") Log in
+    button.progress-button.register(type="button" data-ng-click="toggleOverlay()") Register
 
-            li(ng-show="loginForm.password.$error.required") Password is required
-            li(ng-show="loginForm.password.$error.minlength") Password must be at least 5 characters long
-            li(ng-show="loginForm.password.$error.maxlength") Password must be at most 60 characters long
+.overlay.overlay-cornershape(data-path-to='m 0,0 1439.999975,0 0,805.99999 -1439.999975,0 z')
+  svg(xmlns='http://www.w3.org/2000/svg', width='100%', height='100%', viewbox='0 0 1440 806', preserveaspectratio='none')
+    path.overlay-path(d='m 0,0 1439.999975,0 0,805.99999 0,-805.99999 z')
+  button.overlay-close(type='button' data-ng-click="toggleOverlay()") Close
+  include register

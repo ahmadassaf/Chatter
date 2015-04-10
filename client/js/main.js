@@ -13,7 +13,9 @@ require.config({
         'angular-cookies'         : '../lib/angular-cookies/angular-cookies',
         'angular-ui-router'       : '../lib/angular-ui-router/release/angular-ui-router',
         'socketio'                : '../lib/socket.io-client/socket.io',
-        'underscore'              : '../lib/underscore/underscore'
+        'underscore'              : '../lib/underscore/underscore',
+        'classie'                 : '../lib/misc/classie',
+        'svg'                     : '../lib/misc/snap.svg-min'
     },
 
     /**
@@ -36,7 +38,8 @@ require.config({
     },
 
     deps: [
-        './bootstrap'
+        './bootstrap',
+        '../lib/misc/modernizr.js'
     ],
     urlArgs: "bust=" + (new Date()).getTime()
 });

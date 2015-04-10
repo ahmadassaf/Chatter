@@ -5,7 +5,7 @@ define(['./module'], function (filters) {
     return filters.filter('orient', ['authentication', function (authentication) {
         return function (sender) {
         		var orientation = String(sender) == authentication.user.username ? "right" : "left";
-        		return 'pull-' + orientation;
+        		return 'pos-' + orientation;
 
         }
     }]);

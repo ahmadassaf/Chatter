@@ -1,74 +1,92 @@
-.chat
-{
-	margin: 0;
-	padding: 0;
+@import url(http://fonts.googleapis.com/css?family=Droid+Sans);
 
-	list-style: none;
+body {overflow-x:hidden; margin: 0;padding: 0; height: 100%}
+body * {font-family: 'Droid Sans', sans-serif;}
+
+.wrap{position:relative;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box; border-top:5px solid #16a085;height: 100%;}
+.container_inner, .container{top:20px;width:80%;margin:0 auto;min-width:650px;height: 100%;}
+
+.topbar{padding:35px 10px;*zoom:1}
+.topbar:before,.topbar:after{display:table;content:"";line-height:0}
+.topbar:after{clear:both}
+.logo{float:left;color:#000;font-size:24.5px;font-weight:700;line-height:30px}
+.social_header{float:right;line-height:30px;*zoom:1}
+.social_header:before,.social_header:after{display:table;content:"";line-height:0}
+.social_header:after{clear:both}
+.social_header a{color:#000;font-size: 15px;text-decoration: none;}
+.social_header a:hover{color:#b9c8d8;border-color:#b9c8d8}
+.social_header a img{position:relative;top:-1px;margin-right:3px}
+
+.clearfix{*zoom:1}
+.clearfix:before,.clearfix:after{display:table;content:"";line-height:0}
+.clearfix:after{clear:both}
+
+e{font-weight:200;margin:0 10px}
+
+
+.logo{float:left;color:#000;font-size:24.5px;font-weight:700;line-height:30px}
+.social_header{float:right;line-height:30px;*zoom:1}
+.social_header:before,.social_header:after{display:table;content:"";line-height:0}
+.social_header:after{clear:both}
+.social_header a{color:#000;font-size: 15px}
+.social_header a:hover{color:#b9c8d8;border-color:#b9c8d8}
+.social_header a img{position:relative;top:-1px;margin-right:3px}
+.slogan{padding:80px 70px 20px;text-align:center}
+.slogan h1{color:#000;font:300 56px/120% "Open Sans",sans-serif;padding-bottom:60px;line-height: 1.3em;margin: 0 auto;width: 90%;}
+.slogan h1 span{color:#3498db;margin: 0 10px;}
+h1 strong {margin: 0 15px 0 0;}
+
+
+.chat { margin: 0; padding: 0; list-style: none }
+.chat li { margin-bottom: 10px; padding-bottom: 5px; border-bottom: 1px dotted #b3a9a9 }
+.chat li.left .chat-body { margin-left: 60px }
+.chat li.right .chat-body { margin-right: 60px }
+.chat li .chat-body p { margin: 0; color: #777 }
+.panel .slidedown .glyphicon, .chat .glyphicon { margin-right: 5px; box-shadow: none !important; -webkit-box-shadow: none !important }
+.panel-body { overflow-y: scroll; height: 250px }
+.panel-footer { background: none !important }
+.panel-primary { border: none !important }
+::-webkit-scrollbar-track { background-color: #f5f5f5; -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3) }
+::-webkit-scrollbar { width: 6px; background-color: #f5f5f5 }
+::-webkit-scrollbar-thumb { background-color: #555; -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3) }
+.input { position: relative; display: table; clear: right; width: 65%; vertical-align: top; margin: 5em auto ;z-index: 1;}
+.input__field { position: relative; display: block; float: right; padding: 0.8em; border: none; border-radius: 0; background: #f0f0f0; color: #aaa; font-weight: bold; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-appearance: none }
+.input__field:focus { outline: none }
+.input__label { display: inline-block; float: right; padding: 0em 1em; width: 40%; color: #6a7989; font-weight: bold; font-size: 20px; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none }
+.input__label-content { position: relative; display: block; padding: 1.4em 0; width: 100% }
+.input--haruki { }
+.input__field--haruki { padding: 0.8em 0.25em; width: 100%; background: transparent; color: #fff; font-size: 1.55em }
+.input__label--haruki { position: absolute; width: 100%; text-align: left; pointer-events: none }
+.input__label-content--haruki { -webkit-transition: -webkit-transform 0.3s; transition: transform 0.3s }
+.input__label--haruki::before, .input__label--haruki::after { content: ''; position: absolute; left: 0; z-index: -1; width: 100%; height: 2px; background: #6a7989; -webkit-transition: -webkit-transform 0.3s; transition: transform 0.3s }
+.input__label--haruki::before { top: 0 }
+.input__label--haruki::after { bottom: 0 }
+.input__field--haruki:focus + .input__label--haruki .input__label-content--haruki, .input--filled .input__label-content--haruki { -webkit-transform: translate3d(0, -90%, 0); transform: translate3d(0, -90%, 0) }
+.input__field--haruki:focus + .input__label--haruki::before, .input--filled .input__label--haruki::before { -webkit-transform: translate3d(0, -0.5em, 0); transform: translate3d(0, -0.5em, 0) }
+.input__field--haruki:focus + .input__label--haruki::after, .input--filled .input__label--haruki::after { -webkit-transform: translate3d(0, 0.5em, 0); transform: translate3d(0, 0.5em, 0) }
+*, *:after, *::before { -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box }
+.progress-button { position: relative; display: inline-block; padding: 0 60px; outline: none; border: none; color: #fff; border: 2px solid #fff; background: #1abc9c; text-transform: uppercase; letter-spacing: 1px; font-size: 1em; line-height: 4; margin: 0 10px ;cursor: pointer;}
+.progress-button.register {background: #2980b9}
+.progress-button[disabled], .progress-button[disabled].state-loading { cursor: default }
+.progress-button .content { position: relative; display: block }
+.overlay { position: fixed; width: 100%; height: 100%; top: 0; left: 0; background: rgba(153, 204, 51, 0.9) }
+.overlay .overlay-close { width: 80px; height: 80px; position: absolute; right: 20px; top: 20px; overflow: hidden; border: none; background: url(../img/cross.png) no-repeat center center; text-indent: 200%; color: transparent; outline: none; z-index: 100 }
+.overlay nav { text-align: center; position: relative; top: 50%; height: 60%; -webkit-transform: translateY(-50%); transform: translateY(-50%) }
+.overlay ul { list-style: none; padding: 0; margin: 0 auto; display: inline-block; height: 100%; position: relative }
+.overlay ul li { display: block; height: 20%; height: calc(100% / 5); min-height: 54px; -webkit-backface-visibility: hidden; backface-visibility: hidden }
+.overlay ul li a { font-size: 54px; font-weight: 300; display: block; color: #fff; -webkit-transition: color 0.2s; transition: color 0.2s }
+.overlay ul li a:hover, .overlay ul li a:focus { color: #f0f0f0 }
+.overlay-cornershape { background: transparent; visibility: hidden; -webkit-transition: visibility 0s 0.5s; transition: visibility 0s 0.5s }
+.overlay-cornershape.open { visibility: visible; -webkit-transition: none; transition: none }
+.overlay-cornershape svg { position: absolute; top: 0; left: 0 }
+.overlay-cornershape .overlay-path { fill: rgba(153, 204, 51, 0.9) }
+.overlay-cornershape nav, .overlay-cornershape .overlay-close { opacity: 0; -webkit-transition: opacity 0.4s 0.4s; transition: opacity 0.4s 0.4s }
+.overlay-cornershape.open nav, .overlay-cornershape.open .overlay-close { opacity: 1; -webkit-transition-delay: 0.4s; transition-delay: 0.4s }
+.overlay-cornershape.close nav, .overlay-cornershape.close .overlay-close { -webkit-transition-delay: 0s; transition-delay: 0s }
+@media screen and (max-height:30.5em) {
+	.overlay nav { height: 70%; font-size: 34px }
+	.overlay ul li { min-height: 34px }
 }
-
-.chat li
-{
-	margin-bottom: 10px;
-	padding-bottom: 5px;
-
-	border-bottom: 1px dotted #b3a9a9;
-}
-
-.chat li.left .chat-body
-{
-	margin-left: 60px;
-}
-
-.chat li.right .chat-body
-{
-	margin-right: 60px;
-}
-
-
-.chat li .chat-body p
-{
-	margin: 0;
-
-	color: #777;
-}
-
-.panel .slidedown .glyphicon,
-.chat .glyphicon
-{
-	margin-right: 5px;
-	box-shadow: none !important;
-	-webkit-box-shadow: none !important;
-}
-
-.panel-body
-{
-	overflow-y: scroll;
-
-	height: 250px;
-}
-
-.panel-footer {
-	background: none !important;
-}
-
-.panel-primary {
-	border: none !important
-}
-::-webkit-scrollbar-track
-{
-	background-color: #f5f5f5;
-	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
-}
-
-::-webkit-scrollbar
-{
-	width: 6px;
-
-	background-color: #f5f5f5;
-}
-
-::-webkit-scrollbar-thumb
-{
-	background-color: #555;
-	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
-}
+.loginForm { display: flex;   flex-direction: column;   justify-content: center; width: 70%; margin: 0 auto; border-radius: 15px; /* padding: 4em 0; */}
+.form-group { width: 100%; position: relative; display: block }
+.form-group.buttons { width: 50%; margin: 0 auto; text-align: center }
