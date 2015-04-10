@@ -1,9 +1,11 @@
-define(['./module', 'classie', 'svg'], function(controllers, classie) {
+define(['./module', 'svg'], function(controllers) {
 	'use strict';
-	controllers.controller('login', ['$rootScope', '$scope', '$state', 'authentication', function ($rootScope, $scope, $state, authentication) {
+	controllers.controller('login', ['$rootScope', '$scope', '$state', 'authentication', 'ui', function ($rootScope, $scope, $state, authentication, UI) {
 
-		$scope.email     = "";
-		$scope.password  = "";
+    $scope.email             = "";
+    $scope.password          = "";
+    $scope.registrationError = "";
+    $scope.showError         = false;
 
     $scope.login = function() {
 
@@ -26,111 +28,8 @@ define(['./module', 'classie', 'svg'], function(controllers, classie) {
       });
     };
 
-    // Handle the fancy login forms
-    // trim polyfill : https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/Trim
-    if (!String.prototype.trim) {
-        (function() {
-            // Make sure we trim BOM and NBSP
-            var rtrim = /^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g;
-            String.prototype.trim = function() {
-                return this.replace(rtrim, '');
-            };
-        })();
-    }
-
-    [].slice.call( document.querySelectorAll( 'input.input__field' ) ).forEach( function( inputEl ) {
-        // in case the input is already filled..
-        if( inputEl.value.trim() !== '' ) {
-            classie.add( inputEl.parentNode, 'input--filled' );
-        }
-
-        // events:
-        inputEl.addEventListener( 'focus', onInputFocus );
-        inputEl.addEventListener( 'blur', onInputBlur );
-    } );
-
-    function onInputFocus( ev ) {
-        classie.add( ev.target.parentNode, 'input--filled' );
-    }
-
-    function onInputBlur( ev ) {
-        if( ev.target.value.trim() === '' ) {
-            classie.remove( ev.target.parentNode, 'input--filled' );
-        }
-    }
-
-      var overlay = document.querySelector( 'div.overlay' ),
-      transEndEventNames = {
-        'WebkitTransition': 'webkitTransitionEnd',
-        'MozTransition'   : 'transitionend',
-        'OTransition'     : 'oTransitionEnd',
-        'msTransition'    : 'MSTransitionEnd',
-        'transition'      : 'transitionend'
-      },
-      transEndEventName = transEndEventNames[ Modernizr.prefixed( 'transition' ) ],
-      support = { transitions : Modernizr.csstransitions },
-      s = Snap( overlay.querySelector( 'svg' ) ),
-      path = s.select( 'path' ),
-      pathConfig = {
-        from : path.attr( 'd' ),
-        to : overlay.getAttribute( 'data-path-to' )
-      };
-
-    $scope.toggleOverlay = function toggleOverlay() {
-      if( classie.has( overlay, 'open' ) ) {
-        classie.remove( overlay, 'open' );
-        classie.add( overlay, 'close' );
-
-        var onEndTransitionFn = function( ev ) {
-          classie.remove( overlay, 'close' );
-        };
-
-        path.animate( { 'path' : pathConfig.from }, 400, mina.linear, onEndTransitionFn );
-      }
-      else if( !classie.has( overlay, 'close' ) ) {
-        classie.add( overlay, 'open' );
-        path.animate( { 'path' : pathConfig.to }, 400, mina.linear );
-      }
-    }
-
-
-    // var overlay = document.querySelector( '.md-overlay' );
-
-    // [].slice.call( document.querySelectorAll( '.md-trigger' ) ).forEach( function( el, i ) {
-
-    //   var modal = document.querySelector( '#' + el.getAttribute( 'data-modal' ) ),
-    //     close = modal.querySelector( '.md-close' );
-
-    //   function removeModal( hasPerspective ) {
-    //     classie.remove( modal, 'md-show' );
-
-    //     if( hasPerspective ) {
-    //       classie.remove( document.documentElement, 'md-perspective' );
-    //     }
-    //   }
-
-    //   function removeModalHandler() {
-    //     removeModal( classie.has( el, 'md-setperspective' ) );
-    //   }
-
-    //   el.addEventListener( 'click', function( ev ) {
-    //     classie.add( modal, 'md-show' );
-    //     overlay.removeEventListener( 'click', removeModalHandler );
-    //     overlay.addEventListener( 'click', removeModalHandler );
-
-    //     if( classie.has( el, 'md-setperspective' ) ) {
-    //       setTimeout( function() {
-    //         classie.add( document.documentElement, 'md-perspective' );
-    //       }, 25 );
-    //     }
-    //   });
-
-    //   close.addEventListener( 'click', function( ev ) {
-    //     ev.stopPropagation();
-    //     removeModalHandler();
-    //   });
-
-    // } );
+    UI.activateOverlay($scope, Modernizr);
+    UI.activateModal($scope, Modernizr);
 
   }]);
 });

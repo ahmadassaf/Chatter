@@ -80,7 +80,7 @@ h1 strong {margin: 0 15px 0 0;}
 .alert.alert-danger {
     position: relative;
     display: table;
-    margin: 0 auto;
+    margin: 1em auto;
     text-align: center;
 }
 
@@ -89,6 +89,18 @@ h1 strong {margin: 0 15px 0 0;}
     display: inline-table;
     width: 100%;
     margin: 10px 0;
+}
+
+.alert.alert-danger .message {
+  color: #f1c40f;
+  display: inline;
+  font-size: 20px;
+  margin: 0 5px;
+}
+
+span.fa.fa-exclamation-circle {
+    color: #f1c40f;
+    vertical-align: text-top;
 }
 
 .alert.alert-danger ul li {
