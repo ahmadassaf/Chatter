@@ -1,5 +1,4 @@
 .slogan
-  img.snarc_logo(src='https://cdn0.iconfinder.com/data/icons/ikooni-outline-free-basic/128/free-02-128.png')
   h1
     strong Chatter.me
     | is a simple private chatroom built with
@@ -10,11 +9,17 @@
     span Express
 
 .form-group.buttons
-    button.progress-button(type="button", data-ng-click="toggleModal()") Log in
+    button.progress-button.md-trigger(type="button", data-ng-click="toggleModal()", data-modal="modal-12") Log in
     button.progress-button.register(type="button" data-ng-click="toggleOverlay()") Register
+
+#modal-12.md-modal.md-effect-12
+  .md-content
+    include loginForm
 
 .overlay.overlay-cornershape(data-path-to='m 0,0 1439.999975,0 0,805.99999 -1439.999975,0 z')
   svg(xmlns='http://www.w3.org/2000/svg', width='100%', height='100%', viewbox='0 0 1440 806', preserveaspectratio='none')
     path.overlay-path(d='m 0,0 1439.999975,0 0,805.99999 0,-805.99999 z')
   button.overlay-close(type='button' data-ng-click="toggleOverlay()") Close
   include register
+
+.md-overlay

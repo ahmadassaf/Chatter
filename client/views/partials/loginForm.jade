@@ -22,3 +22,5 @@ form.loginForm(ng-submit="login()", name="loginForm", role="form")
             li(ng-show="loginForm.password.$error.required") Password is required
             li(ng-show="loginForm.password.$error.minlength") Password must be at least 5 characters long
             li(ng-show="loginForm.password.$error.maxlength") Password must be at most 60 characters long
+
+button.md-close.overlay-close
