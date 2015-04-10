@@ -34,6 +34,11 @@ define(['./module', 'classie'], function(services, classie) {
 			          classie.remove( overlay, 'close' );
 			        };
 
+			        // Clearing the form when we close the modal
+			        if (classie.has( overlay, 'close' )) {
+			        	document.querySelector( 'form.registrationForm' ).reset();
+			        }
+
 			        path.animate( { 'path' : pathConfig.from }, 400, mina.linear, onEndTransitionFn );
 			      }
 			      else if( !classie.has( overlay, 'close' ) ) {
