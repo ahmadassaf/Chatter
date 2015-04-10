@@ -14,7 +14,6 @@
     "angular-cookies"   : "latest",
     "angular-ui-router" : "latest",
     "socket.io-client"  : "latest",
-    "underscore"        : "latest",
-    "trianglify"        : "latest"
+    "underscore"        : "latest"
   }
 }
