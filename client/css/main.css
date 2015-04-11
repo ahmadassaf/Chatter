@@ -5,120 +5,57 @@
 
 @import url(http://fonts.googleapis.com/css?family=Droid+Sans);
 
-body {overflow-x:hidden; margin: 0;padding: 0; height: 100%;background: #34495e;color: #fff;}
-body * {font-family: 'Droid Sans', sans-serif;}
-.clearfix:before, .clearfix:after {
-  display: table;
-  content: " ";
-  }
-  .clearfix:after {
-  clear: both;
-}
+/* Utilitiy classes */
+.clearfix:before, .clearfix:after { display: table; content: " "; }
+.clearfix:after { clear: both; }
+.clearfix { *zoom: 1 }
+.img-circle { border-radius: 50%; vertical-align: middle; }
 
-.wrap{position:relative;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box; border-top:5px solid #16a085;height: 100%;}
-.container_inner, .container{top:20px;width:80%;margin:0 auto;min-width:650px;height: 100%;}
+/* Mainn Skeleton */
+body { overflow-x: hidden; margin: 0; padding: 0; height: 100%; background: #34495e; color: #fff; }
+body * { font-family: 'Droid Sans', sans-serif; }
+.wrap { position: relative; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; border-top: 5px solid #16a085; height: 100%; }
+.container_inner, .container { top: 20px; width: 80%; margin: 0 auto; min-width: 650px; height: 100%; }
 
-.topbar{padding:35px 10px;*zoom:1;}
-.topbar:before,.topbar:after{display:table;content:"";line-height:0}
-.topbar:after{clear:both}
-.logo{float:left;color:#000;font-size:24.5px;font-weight:700;line-height:30px}
-.social_header{float:right;line-height:30px;*zoom:1}
-.social_header:before,.social_header:after{display:table;content:"";line-height:0}
-.social_header:after{clear:both}
-.social_header a{color:#000;font-size: 15px;text-decoration: none;}
-.social_header a:hover{color:#b9c8d8;border-color:#b9c8d8}
-.social_header a img{position:relative;top:-1px;margin-right:3px}
-.social_header .logout {color: #e67e22;}
-.social_header .fa {margin: 0 5px}
-.social_header strong {color: #95a5a6;}
+/* Top Information bar */
+.topbar { padding: 35px 10px; *zoom: 1; }
+.topbar:before, .topbar:after { display: table; content: ""; line-height: 0 }
+.topbar:after { clear: both }
+.logo { float: left; color: #000; font-size: 24.5px; font-weight: 700; line-height: 30px }
+.social_header { float: right; line-height: 30px; *zoom: 1 }
+.social_header:before, .social_header:after { display: table; content: ""; line-height: 0 }
+.social_header:after { clear: both }
+.social_header a { color: #000; font-size: 15px; text-decoration: none; }
+.social_header a:hover { color: #b9c8d8; border-color: #b9c8d8 }
+.social_header a img { position: relative; top: -1px; margin-right: 3px }
+.social_header .logout { color: #e67e22; }
+.social_header .fa { margin: 0 5px }
+.social_header strong { color: #95a5a6; }
 
-.clearfix{*zoom:1}
-.clearfix:before,.clearfix:after{display:table;content:"";line-height:0}
-.clearfix:after{clear:both}
+/* Main page Content */
+.slogan h1 { color: #fff; font: 300 56px/120% "Open Sans", sans-serif; padding-bottom: 60px; line-height: 1.3em; margin: 0 auto; width: 90%; }
+.slogan h1 span { color: #3498db; margin: 0 10px; }
 
-e{font-weight:200;margin:0 10px}
-
-
-.logo{float:left;color: #eee;font-size:24.5px;font-weight:700;line-height:30px}
-.social_header{float:right;line-height:30px;*zoom:1}
-.social_header:before,.social_header:after{display:table;content:"";line-height:0}
-.social_header:after{clear:both}
-.social_header a{color: #ecf0f1;font-size: 15px;margin: 0 10px;}
-.social_header a:hover{color:#b9c8d8;border-color:#b9c8d8}
-.social_header a img{position:relative;top:-1px;margin-right:3px}
-.slogan{padding: 15% 70px 20px;text-align:center}
-.slogan h1{color: #fff;font:300 56px/120% "Open Sans",sans-serif;padding-bottom:60px;line-height: 1.3em;margin: 0 auto;width: 90%;}
-.slogan h1 span{color:#3498db;margin: 0 10px;}
-h1 strong {margin: 0 15px 0 0;}
-
-.button { position: relative; display: inline-block; padding: 0 60px; outline: none; border: none; color: #fff; border: 2px solid #fff; background: #1abc9c; text-transform: uppercase; letter-spacing: 1px; font-size: 1em; line-height: 4; margin: 0 10px ;cursor: pointer;}
-.button.blue {background: #2980b9}
+/* Buttons Styles */
+.button { position: relative; display: inline-block; padding: 0 60px; outline: none; border: none; color: #fff; border: 2px solid #fff; background: #1abc9c; text-transform: uppercase; letter-spacing: 1px; font-size: 1em; line-height: 4; margin: 0 10px; cursor: pointer; }
+.button.blue { background: #2980b9 }
 .button[disabled] { cursor: default }
 .button .content { position: relative; display: block }
 
-
-.loginForm { display: flex;   flex-direction: column;   justify-content: center; width: 70%; margin: 0 auto; border-radius: 15px}
+/* Forms (login/registration) */
+.loginForm { display: flex; flex-direction: column; justify-content: center; width: 70%; margin: 0 auto; border-radius: 15px }
 .form-group { width: 100%; position: relative; display: block }
 .form-group.buttons { width: 50%; margin: 0 auto; text-align: center }
+.registrationForm { width: 50%; margin: 1.5em auto; text-align: center; }
+.registrationForm .input { margin: 0px auto; }
 
-.registrationForm {
-  width: 50%;
-  margin: 1.5em auto;
-  text-align: center;
-}
-.registrationForm .input {
-  margin: 0px auto;
-}
+/* Alerts and Information Boxes*/
+.infoBox h3 { color: #f1c40f; font-size: 2em; margin: 0; padding: 0.4em; text-align: center; font-size: 2.4em; font-weight: 300; opacity: 0.8; }
+.infoBox { position: relative; margin: 1em auto; text-align: center; display: block; }
+.infoBox ul { position: relative; margin: 10px auto; display: inline; }
+.infoBox ul li { margin: 5px; position: relative; clear: both; min-height: 0; color: #f1c40f; list-style: none; text-align: center; }
 
-.infoBox h3 {
-    color: #f1c40f;
-    font-size: 2em;
-    margin: 0;   padding: 0.4em;   text-align: center;   font-size: 2.4em;   font-weight: 300;   opacity: 0.8;
-}
-
-.infoBox {
-    position: relative;
-    margin: 1em auto;
-    text-align: center;
-    display: block;
-}
-
-.infoBox ul {
-    position: relative;
-    margin: 10px auto;
-    display: inline;
-}
-
-.infoBox ul li {
-    margin: 5px;
-    position: relative;
-    clear: both;
-    min-height: 0;
-    color: #f1c40f;
-    list-style: none;
-    text-align: center;
-}
-
-.messagesList {
-    width: 100%;
-    height: 800px;
-}
-
-input#messageBox {
-    height: 30px;
-    width: 88%;
-    font-size: 15px;
-    border: none;
-    padding: 5px;
-    margin: 0 5px;
-}
-
-button#btn-chat {
-    width: 9%;
-    height: 40px;
-    color: #fff;
-    font-size: 15px;
-    background: #2ecc71;
-    padding: 5px;
-    border: none;
-}
+/* General Styling */
+h1 strong { margin: 0 15px 0 0; }
+e { font-weight: 200; margin: 0 10px }
+small { font-size: 85%; }
