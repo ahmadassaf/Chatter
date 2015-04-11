@@ -7,25 +7,28 @@ define(['./module', 'underscore'], function(controllers, _) {
 	controllers.controller('chat', ['$scope', 'authentication', 'socket', function ($scope, authentication, socket) {
 
         $scope.messages = [];
+        $scope.users    = [];
         io              = socket;
         user            = authentication.user;
 
         // Get the list of connected users and then join the list
-        socket.emit('init', user, function (data) {
-            console.log(data);
+        socket.emit('init', user, function (users) {
+            $scope.users = users;
         });
 
         socket.on('user:join', function(user){
+            console.log(user);
             console.log(user.username + " has just joined");
+            $scope.users.push(user);
         });
 
-        socket.on('init', function(users){
+        // socket.on('init', function(users){
 
-            var connectedUsers = users.connectedUsers;
-            var currentUser    = user.username;
+        //     var connectedUsers = users.connectedUsers;
+        //     var currentUser    = user.username;
 
-            connectedUsers.splice(connectedUsers.indexOf(currentUser), 1);
-         });
+        //     connectedUsers.splice(connectedUsers.indexOf(currentUser), 1);
+        //  });
 
         socket.on('user:message', function(message){
             $scope.messages.push(message);

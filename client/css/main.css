@@ -39,7 +39,7 @@ body * { font-family: 'Droid Sans', sans-serif; }
 .slogan h1 span { color: #3498db; margin: 0 10px; }
 
 /* Buttons Styles */
-.button { position: relative; display: inline-block; padding: 0 60px; outline: none; border: none; color: #fff; border: 2px solid #fff; background: #1abc9c; text-transform: uppercase; letter-spacing: 1px; font-size: 1em; line-height: 4; margin: 0 10px; cursor: pointer; }
+.button { position: relative; display: inline-block; padding: 0 60px; outline: none; border: none; color: #fff; border: 2px solid #fff; background: #1abc9c; text-transform: uppercase; letter-spacing: 1px; font-size: 1em; line-height: 4; margin: 5px 10px; cursor: pointer; }
 .button.blue { background: #2980b9 }
 .button[disabled] { cursor: default }
 .button .content { position: relative; display: block }
@@ -61,3 +61,4 @@ body * { font-family: 'Droid Sans', sans-serif; }
 h1 strong { margin: 0 15px 0 0; }
 e { font-weight: 200; margin: 0 10px }
 small { font-size: 85%; }
+input:required {box-shadow:none;}
