@@ -7,7 +7,7 @@ define(['./module', 'classie'], function(services, classie) {
     services.factory('ui', function() {
 
     	return {
-    		activateOverlay : function($scope, Modernizr) {
+    		activateOverlay : function($scope, $rootScope, Modernizr) {
 					var overlay            = document.querySelector( 'div.overlay' );
 					var transEndEventNames = {
 						'WebkitTransition': 'webkitTransitionEnd',
@@ -37,6 +37,7 @@ define(['./module', 'classie'], function(services, classie) {
 			        // Clearing the form when we close the modal
 			        if (classie.has( overlay, 'close' )) {
 			        	document.querySelector( 'form.registrationForm' ).reset();
+			        	$rootScope.showRegisterError  = false;
 			        }
 
 			        path.animate( { 'path' : pathConfig.from }, 400, mina.linear, onEndTransitionFn );
@@ -48,7 +49,7 @@ define(['./module', 'classie'], function(services, classie) {
 			    }
     		},
 
-    		activateModal: function() {
+    		activateModal: function($scope) {
 			    var overlay = document.querySelector( '.md-overlay' );
 
 			    [].slice.call( document.querySelectorAll( '.md-trigger' ) ).forEach( function( el, i ) {
@@ -58,6 +59,8 @@ define(['./module', 'classie'], function(services, classie) {
 
 			      function removeModal( hasPerspective ) {
 			        classie.remove( modal, 'md-show' );
+			        document.querySelector( 'form.loginForm' ).reset();
+			        $scope.loginInfoMessage  = "";
 
 			        if( hasPerspective ) {
 			          classie.remove( document.documentElement, 'md-perspective' );
@@ -86,6 +89,29 @@ define(['./module', 'classie'], function(services, classie) {
 			      });
 
 			    });
+    		},
+
+    		activateFancyInput: function() {
+
+			    [].slice.call( document.querySelectorAll( 'input.input__field' ) ).forEach( function( inputEl ) {
+			        // Check in case the input is already filled
+			        if( inputEl.value.trim() !== '' ) {
+			            classie.add( inputEl.parentNode, 'input--filled' );
+			        }
+
+			        inputEl.addEventListener( 'focus', onInputFocus );
+			        inputEl.addEventListener( 'blur', onInputBlur );
+			    } );
+
+			    function onInputFocus( ev ) {
+			        classie.add( ev.target.parentNode, 'input--filled' );
+			    }
+
+			    function onInputBlur( ev ) {
+			        if( ev.target.value.trim() === '' ) {
+			            classie.remove( ev.target.parentNode, 'input--filled' );
+			        }
+			    }
     		}
 
     	}

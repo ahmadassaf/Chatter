@@ -2,17 +2,15 @@ define(['./module', 'svg'], function(controllers) {
 	'use strict';
 	controllers.controller('login', ['$rootScope', '$scope', '$state', 'authentication', 'ui', function ($rootScope, $scope, $state, authentication, UI) {
 
-    $scope.email             = "";
-    $scope.password          = "";
-    $scope.registrationError = "";
-    $scope.showError         = false;
+    $scope.loginEmail        = "";
+    $scope.loginPassword     = "";
 
     $scope.login = function() {
 
       authentication.login({
       	// Handle the fetching of the data from the UI via the Angular scope
-				email   : $scope.email,
-				password: $scope.password
+				email   : $scope.loginEmail,
+				password: $scope.loginPassword
 
       },
 
@@ -23,13 +21,14 @@ define(['./module', 'svg'], function(controllers) {
       },
       function(err) {
       	// If the login fails then show an appropriate message with the error to the user and stay on the current page
-      	$scope.err = err;
-      	$scope.showError = true;
+        $scope.loginInfoMessage = err;
+        $scope.showLoginError   = true;
       });
     };
 
-    UI.activateOverlay($scope, Modernizr);
-    UI.activateModal($scope, Modernizr);
+    UI.activateOverlay($scope, $rootScope, Modernizr);
+    UI.activateModal($scope);
+    UI.activateFancyInput();
 
   }]);
 });

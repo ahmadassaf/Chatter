@@ -70,43 +70,38 @@ h1 strong {margin: 0 15px 0 0;}
 
 .registrationForm {
   width: 50%;
-  margin: 5% auto;
+  margin: 1.5em auto;
   text-align: center;
 }
 .registrationForm .input {
   margin: 0px auto;
 }
 
-.alert.alert-danger {
+.infoBox h3 {
+    color: #f1c40f;
+    font-size: 2em;
+    margin: 0;   padding: 0.4em;   text-align: center;   font-size: 2.4em;   font-weight: 300;   opacity: 0.8;
+}
+
+.infoBox {
     position: relative;
-    display: table;
     margin: 1em auto;
     text-align: center;
+    display: block;
 }
 
-.alert.alert-danger ul {
+.infoBox ul {
     position: relative;
-    display: inline-table;
-    width: 100%;
-    margin: 10px 0;
+    margin: 10px auto;
+    display: inline;
 }
 
-.alert.alert-danger .message {
-  color: #f1c40f;
-  display: inline;
-  font-size: 20px;
-  margin: 0 5px;
-}
-
-span.fa.fa-exclamation-circle {
-    color: #f1c40f;
-    vertical-align: text-top;
-}
-
-.alert.alert-danger ul li {
+.infoBox ul li {
     margin: 5px;
     position: relative;
-    clear: left;
+    clear: both;
     min-height: 0;
     color: #f1c40f;
+    list-style: none;
+    text-align: center;
 }

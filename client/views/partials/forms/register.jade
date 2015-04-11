@@ -1,3 +1,6 @@
+.infoBox(ng-show="showRegisterError" || false)
+    h3 {{registerInfoMessage}}
+
 form.registrationForm(ng-submit="register()", name="registerForm", role="form")
     .form-group
         span.input.input--isao
@@ -32,7 +35,7 @@ form.registrationForm(ng-submit="register()", name="registerForm", role="form")
         .controls
             button.button.blue(type="submit", data-ng-disabled="registerForm.$invalid") Submit
 
-.alert.alert-danger(ng-show="registerForm.$invalid && registerForm.$dirty")
+.infoBox(ng-show="registerForm.$invalid && registerForm.$dirty")
     strong Please correct the following errors:
     ul
         li(ng-show="registerForm.username.$error.required") Username is required

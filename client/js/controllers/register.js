@@ -2,11 +2,10 @@ define(['./module'], function(controllers) {
 	'use strict';
 	controllers.controller('register', ['$rootScope', '$scope', '$state', 'authentication', function ($rootScope, $scope, $state, authentication) {
 
-            $scope.firstname = "";
-            $scope.lastname  = "";
-            $scope.email     = "";
-            $scope.password  = "";
-            $scope.gender    = "";
+            $scope.firstname           = "";
+            $scope.lastname            = "";
+            $scope.email               = "";
+            $scope.password            = "";
 
             $scope.register = function() {
 
@@ -27,14 +26,9 @@ define(['./module'], function(controllers) {
                   	$state.go('user.chat');
                   },
                   function(err) {
-
-                        console.log($scope.registrationMessage );
-                        console.log($rootScope.registrationMessage );
-                        console.log(err);
-
                   	// If the registration fails then show an appropriate message with the error to the user and stay on the current page
-                        $scope.registrationMessage     = err;
-                        $rootScope.showError = true;
+                        $scope.registerInfoMessage     = err;
+                        $rootScope.showRegisterError   = true;
                   });
             };
 	}]);

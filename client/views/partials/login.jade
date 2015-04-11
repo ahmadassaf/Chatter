@@ -20,9 +20,7 @@
   svg(xmlns='http://www.w3.org/2000/svg', width='100%', height='100%', viewbox='0 0 1440 806', preserveaspectratio='none')
     path.overlay-path(d='m 0,0 1439.999975,0 0,805.99999 0,-805.99999 z')
   button.overlay-close(type='button' data-ng-click="toggleOverlay()") Close
-  .alert.alert-danger(ng-show="showError" || false)
-        span.fa.fa-exclamation-circle
-        .message {{registrationMessage}}
-  ng-include(src="'/partials/forms/register'")
+  div.registrationOverlayForm(ng-controller="register")
+    include forms/register
 
 .md-overlay
