@@ -22,14 +22,6 @@ define(['./module', 'underscore'], function(controllers, _) {
             $scope.users.push(user);
         });
 
-        // socket.on('init', function(users){
-
-        //     var connectedUsers = users.connectedUsers;
-        //     var currentUser    = user.username;
-
-        //     connectedUsers.splice(connectedUsers.indexOf(currentUser), 1);
-        //  });
-
         socket.on('user:message', function(message){
             $scope.messages.push(message);
         });
@@ -46,7 +38,7 @@ define(['./module', 'underscore'], function(controllers, _) {
             $scope.messages.push(message);
 
             $scope.message = '';
-        }
+        };
 
   }]);
 });

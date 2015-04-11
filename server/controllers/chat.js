@@ -33,7 +33,7 @@ module.exports = function(io) {
 
 		socket.emit('init', {'connectedUsers' : connectedUsers});
 
-		console.log("We have " + connectedUsers.length + " connected users now !" );
+		console.log("We have " + _.size(connectedUsers) + " connected users now !" );
 	});
 
 };

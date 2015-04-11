@@ -9,7 +9,7 @@
 .clearfix:before, .clearfix:after { display: table; content: " "; }
 .clearfix:after { clear: both; }
 .clearfix { *zoom: 1 }
-.img-circle { border-radius: 50%; vertical-align: middle; }
+.img-circle { border-radius: 50%; vertical-align: middle;}
 
 /* Mainn Skeleton */
 body { overflow-x: hidden; margin: 0; padding: 0; height: 100%; background: #34495e; color: #fff; }
