@@ -113,11 +113,16 @@ define(['./app'], function (app) {
             }
 
             /*
+            if (!authentication.isLoggedIn()) {
+                $state.go('public.home');
+            }
+
             if (fromState.name === "" && authentication.isLoggedIn()) {
                 $state.go('user.chat');
                 event.preventDefault();
             }
             */
+
         });
     }]);
 });

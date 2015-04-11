@@ -42,7 +42,7 @@ define(['./module'], function(services) {
                     success(user);
                 }).error(error);
             },
-            logout: function(success, error) {
+            logout: function(user, success, error) {
                 $http.post('/logout').success(function() {
                     changeUser({
                         username: '',

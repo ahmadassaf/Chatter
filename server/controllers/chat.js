@@ -17,18 +17,24 @@ module.exports = function(io) {
 			// Check if the user is not already connected and add him
 			if (_.has(connectedUsers, username)) {
 				// Send to the callback the list of connected users
-				fn(_.values(_.omit(connectedUsers,username)));
+				fn(_.omit(connectedUsers,username));
 			} else {
-				fn(_.values(connectedUsers));
+				fn(connectedUsers);
 				connectedUsers[username] = user;
 				// Broadcast a message for connected user on the new user joining
 			  socket.broadcast.emit('user:join', user);
-			  console.log(user.username + " has just joined us. We have " + connectedUsers.size + " connected users now !" );
+			  console.log(user.username + " has just joined us. We have " +  _.size(connectedUsers) + " connected users now !" );
 			}
 		});
 
 		socket.on('chat', function(message){
 			socket.broadcast.emit('user:message', message);
+		});
+
+		socket.on('user:leave', function(user){
+			connectedUsers = _.omit(connectedUsers, user.username);
+			socket.broadcast.emit('user:leave', user);
+			console.log(user.username + " has just left us. We have " +  _.size(connectedUsers) + " connected users now !" );
 		});
 
 		socket.emit('init', {'connectedUsers' : connectedUsers});

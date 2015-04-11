@@ -2,24 +2,38 @@ define(['./module', 'underscore'], function(controllers, _) {
 
 	'use strict';
 
-    var io, user;
+    var io, currentUser;
 
-	controllers.controller('chat', ['$scope', 'authentication', 'socket', function ($scope, authentication, socket) {
+	controllers.controller('chat', ['$rootScope', '$scope', '$state', 'authentication', 'socket', function ($rootScope, $scope, $state, authentication, socket) {
 
         $scope.messages = [];
-        $scope.users    = [];
+        $scope.users    = {};
+
         io              = socket;
-        user            = authentication.user;
+        currentUser     = authentication.user;
 
         // Get the list of connected users and then join the list
-        socket.emit('init', user, function (users) {
+        socket.emit('init', currentUser, function (users) {
             $scope.users = users;
         });
 
         socket.on('user:join', function(user){
-            console.log(user);
-            console.log(user.username + " has just joined");
-            $scope.users.push(user);
+            $scope.users[user.username] = user;
+        });
+
+        socket.on('user:leave', function(user){
+            // Check if the user:leave signal is from another window where the usal is logged in and log him out
+            if (user.username == currentUser.username) {
+
+                authentication.logout(function() { },
+
+                    function() { $state.go('public.home');},
+                    function(err){ $rootScope.error = "Failed to Logout"; });
+
+            } else {
+                $scope.users = _.omit($scope.users, user.username);
+            }
+
         });
 
         socket.on('user:message', function(message){
@@ -29,8 +43,8 @@ define(['./module', 'underscore'], function(controllers, _) {
         $scope.sendMessage = function() {
             // Prepare the message object to be sent to the server and rendered on the frontend
             var message = {
-                sender      : user.username,
-                initials    : user.username.replace(/\W*(\w)\w*/g, '$1').toUpperCase(),
+                sender      : currentUser.username,
+                initials    : currentUser.username.replace(/\W*(\w)\w*/g, '$1').toUpperCase(),
                 message     : $scope.message
             };
             // Emit the message to the server side
@@ -39,6 +53,5 @@ define(['./module', 'underscore'], function(controllers, _) {
 
             $scope.message = '';
         };
-
   }]);
 });
