@@ -43,11 +43,6 @@ define(['./app'], function (app) {
                 access: access.anon
             }
         })
-        .state('anon.register', {
-            url: '/register/',
-            templateUrl: '/partials/register',
-            controller : 'register'
-        })
         .state('anon.404', {
             url        : '/404/',
             templateUrl: 'partials/404'
@@ -65,10 +60,6 @@ define(['./app'], function (app) {
             url        : '/chat/',
             templateUrl: 'partials/chat',
             controller : 'chat'
-        })
-        .state('user.profile', {
-            url        : '/profile/',
-            templateUrl: 'partials/profile'
         });
 
   // Any uncatchable route will redirect to 404

@@ -22,17 +22,19 @@ body * { font-family: 'Droid Sans', sans-serif; }
 .topbar:before, .topbar:after { display: table; content: ""; line-height: 0 }
 .topbar:after { clear: both }
 .logo { float: left; color: #000; font-size: 24.5px; font-weight: 700; line-height: 30px }
-.social_header { float: right; line-height: 30px; *zoom: 1 }
+.social_header { float: right; line-height: 30px; *zoom: 1 ;}
 .social_header:before, .social_header:after { display: table; content: ""; line-height: 0 }
 .social_header:after { clear: both }
-.social_header a { color: #000; font-size: 15px; text-decoration: none; }
+.social_header a { color: #fff; font-size: 15px; text-decoration: none; }
 .social_header a:hover { color: #b9c8d8; border-color: #b9c8d8 }
 .social_header a img { position: relative; top: -1px; margin-right: 3px }
 .social_header .logout { color: #e67e22; }
-.social_header .fa { margin: 0 5px }
-.social_header strong { color: #95a5a6; }
+.social_header .fa { margin: 0 5px ;}
+.social_header strong { color: #95a5a6; margin: 0 5px 0 0;}
+.social_header strong:after {content: " -";}
 
 /* Main page Content */
+.slogan {text-align: center;margin: 8em 0px;}
 .slogan h1 { color: #fff; font: 300 56px/120% "Open Sans", sans-serif; padding-bottom: 60px; line-height: 1.3em; margin: 0 auto; width: 90%; }
 .slogan h1 span { color: #3498db; margin: 0 10px; }
 

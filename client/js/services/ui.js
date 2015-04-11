@@ -7,6 +7,7 @@ define(['./module', 'classie'], function(services, classie) {
     services.factory('ui', function() {
 
     	return {
+
     		activateOverlay : function($scope, $rootScope, Modernizr) {
 					var overlay            = document.querySelector( 'div.overlay' );
 					var transEndEventNames = {

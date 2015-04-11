@@ -1,7 +1,7 @@
 .container
   .messagesList
     ul.chat(id="chatBox")
-      li.right.clearfix(data-ng-repeat='message in messages', data-ng-class='orientation')
+      li.clearfix(ng-class="message.sender | orient:(true)", data-ng-repeat='message in messages', data-ng-class='orientation')
         include message
   .messageBox
     input#messageBox(type='text', placeholder='Type your message here...' data-ng-model="message")

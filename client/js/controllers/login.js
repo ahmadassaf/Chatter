@@ -26,6 +26,7 @@ define(['./module', 'svg'], function(controllers) {
       });
     };
 
+    // Attach suitable UI handlers, functions and event listeners
     UI.activateOverlay($scope, $rootScope, Modernizr);
     UI.activateModal($scope);
     UI.activateFancyInput();
