@@ -1,0 +1,26 @@
+.infoBox(data-ng-show="showLoginError")
+    h3 {{loginInfoMessage}}
+form.loginForm(data-ng-submit="login()", name="loginForm", role="form")
+    .form-group
+        span.input.input--haruki
+          input#email.input__field.input__field--haruki(data-ng-model="loginEmail", type='email', name="email", required, autofocus)
+          label.input__label.input__label--haruki(for='email')
+            span.input__label-content.input__label-content--haruki E-Mail
+        span.input.input--haruki
+          input#password.input__field.input__field--haruki(type='password' , data-ng-model="loginPassword", name="password", required, data-ng-minlength="5", data-ng-maxlength="60")
+          label.input__label.input__label--haruki(for='password')
+            span.input__label-content.input__label-content--haruki Password
+    .form-group.buttons
+        button.button(type="submit", data-ng-disabled="loginForm.$invalid") Log in
+
+    .infoBox(data-ng-show="loginForm.$invalid && loginForm.$dirty")
+        strong Please correct the following errors:
+        ul
+            li(data-ng-show="loginForm.email.$error.required") Email is required
+            li(data-ng-show="loginForm.email.$error.email") Email is invalid
+
+            li(data-ng-show="loginForm.password.$error.required") Password is required
+            li(data-ng-show="loginForm.password.$error.minlength") Password must be at least 5 characters long
+            li(data-ng-show="loginForm.password.$error.maxlength") Password must be at most 60 characters long
+
+button.md-close.overlay-close

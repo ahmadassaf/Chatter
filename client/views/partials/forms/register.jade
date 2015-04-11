@@ -1,0 +1,59 @@
+.infoBox(data-ng-show="showRegisterError" || false)
+    h3 {{registerInfoMessage}}
+
+form.registrationForm(data-ng-submit="register()", name="registerForm", role="form")
+    .form-group
+        span.input.input--isao
+          input#username.input__field.input__field--isao(type='text', data-ng-model="username", name="username", required, data-ng-minlength="1", data-ng-maxlength="20", autofocus)
+          label.input__label.input__label--isao(for='username', data-content='Username')
+            span.input__label-content.input__label-content--isao Username
+
+    .form-group
+        span.input.input--isao
+          input#email.input__field.input__field--isao(type="email", data-ng-model="email", name="email", required )
+          label.input__label.input__label--isao(for='email', data-content='Email')
+            span.input__label-content.input__label-content--isao Email
+
+    .form-group
+        span.input.input--isao
+          input#firstname.input__field.input__field--isao(type='text', data-ng-model="firstname", name="firstname", required, data-ng-minlength="1", data-ng-maxlength="20")
+          label.input__label.input__label--isao(for='firstname', data-content='First Name')
+            span.input__label-content.input__label-content--isao First Name
+
+    .form-group
+        span.input.input--isao
+          input#lastname.input__field.input__field--isao(type='text', data-ng-model="lastname", name="lastname", required, data-ng-minlength="1", data-ng-maxlength="20")
+          label.input__label.input__label--isao(for='lastname', data-content='Last Name')
+            span.input__label-content.input__label-content--isao Last Name
+    .form-group
+        span.input.input--isao
+          input#password.input__field.input__field--isao(type="password", data-ng-model="password", name="password", required, data-ng-minlength="5", data-ng-maxlength="60")
+          label.input__label.input__label--isao(for='password', data-content='Password')
+            span.input__label-content.input__label-content--isao Password
+
+    .form-group
+        .controls
+            button.button.blue(type="submit", data-ng-disabled="registerForm.$invalid") Submit
+
+.infoBox(data-ng-show="registerForm.$invalid && registerForm.$dirty")
+    strong Please correct the following errors:
+    ul
+        li(data-ng-show="registerForm.username.$error.required") Username is required
+        li(data-ng-show="registerForm.username.$error.minlength") Username has to be at least 1 character long
+        li(data-ng-show="registerForm.username.$error.maxlength") Username has to be at most 20 character long
+
+        li(data-ng-show="registerForm.email.$error.required") Email is required
+        li(data-ng-show="registerForm.email.$error.email") Email is invalid
+
+        li(data-ng-show="registerForm.firstname.$error.required") First name is required
+        li(data-ng-show="registerForm.firstname.$error.minlength") First name has to be at least 1 character long
+        li(data-ng-show="registerForm.firstname.$error.maxlength") First name has to be at most 20 character long
+
+        li(data-ng-show="registerForm.lastname.$error.required") Last name is required
+        li(data-ng-show="registerForm.lastname.$error.minlength") Last name has to be at least 1 character long
+        li(data-ng-show="registerForm.lastname.$error.maxlength") Last name has to be at most 20 character long
+
+
+        li(data-ng-show="registerForm.password.$error.required") Password is required
+        li(data-ng-show="registerForm.password.$error.minlength") Password must be at least 5 characters long
+        li(data-ng-show="registerForm.password.$error.maxlength") Password must be at most 60 characters long

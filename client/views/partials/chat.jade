@@ -1,14 +1,14 @@
 .container
-    .row
-        .col-md-9
-          .panel.panel-primary
-            .panel-body
-              ul.chat(id="chatBox")
-                li.clearfix(data-ng-repeat='message in messages', data-ng-class='orientation')
-                  include message
-            .panel-footer
-              .input-group
-                input#btn-input.form-control.input-sm(type='text', placeholder='Type your message here...' data-ng-model="message")
-                span.input-group-btn
-                  button#btn-chat.btn.btn-warning.btn-sm(data-ng-click="sendMessage()")
-                    | Send
+  ul.usersList
+    li.clearfix(data-ng-repeat='user in users')
+      img.img-circle(data-ng-src='http://placehold.it/50/FA6F57/fff&text={{user.initials}}', alt='User Avatar')
+  .messagesList
+    ul.chat(id="chatBox")
+      li.clearfix(ng-class="message.sender | orient:(true)", data-ng-repeat='message in messages')
+        include message
+  .messageBox
+    form(data-ng-submit="sendMessage()", name="chatForm", role="form")
+      input#messageBox(type='text', placeholder='Type your message here...' data-ng-model="message")
+      button#btn-chat.btn.btn-warning.btn-sm(type="submit")
+        | Send
+

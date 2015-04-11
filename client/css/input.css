@@ -1,0 +1,10 @@
+@import "input/isao.css";
+@import "input/haruki.css";
+
+.input { position: relative; display: table; clear: right; width: 65%; vertical-align: top; margin: 5em auto; z-index: 1; }
+.input__field { position: relative; display: block; float: right; padding: 0.8em; border: none; border-radius: 0; color: #aaa; font-weight: bold; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-appearance: none }
+.input__field:focus { outline: none }
+.input__label { display: inline-block; float: right; padding: 0em 1em; width: 100%; color: #fff; font-weight: bold; font-size: 20px; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none }
+.input__label-content { position: relative; display: block; padding: 1.4em 0; width: 100% }
+.loginForm .input__field { padding: 20px 0; }
+.registrationForm .input__field { width: 100%; font-size: 20px; padding: 5px 20px; font-weight: normal }

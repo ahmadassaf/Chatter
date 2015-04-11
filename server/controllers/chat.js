@@ -1,8 +1,9 @@
 var User       = require('../models/user.js');
+var _          = require('underscore');
 
 module.exports = function(io) {
 
-	var connectedUsers = [];
+	var connectedUsers = {};
 
 	io.on('connection', function (socket) {
 
@@ -11,16 +12,18 @@ module.exports = function(io) {
 
 			// The connected username
 			var username = user.username;
+			var user     = _.extend(user,{'initials': user.username.replace(/\W*(\w)\w*/g, '$1').toUpperCase()});
 
 			// Check if the user is not already connected and add him
-			if (connectedUsers.indexOf(username) === -1) {
+			if (_.has(connectedUsers, username)) {
 				// Send to the callback the list of connected users
-				fn(connectedUsers);
-
-				connectedUsers.push(username);
+				fn(_.values(_.omit(connectedUsers,username)));
+			} else {
+				fn(_.values(connectedUsers));
+				connectedUsers[username] = user;
 				// Broadcast a message for connected user on the new user joining
 			  socket.broadcast.emit('user:join', user);
-			  console.log(user.username + " has just joined us. We have " + connectedUsers.length + " connected users now !" );
+			  console.log(user.username + " has just joined us. We have " + connectedUsers.size + " connected users now !" );
 			}
 		});
 
