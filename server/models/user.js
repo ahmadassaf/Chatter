@@ -4,13 +4,12 @@ var _        = require('underscore')
 
 var user = mongoose.Schema({
 
-		email     : String,
-		username  : String,
-		password  : String,
-		gender    : String,
-		first_name: String,
-		last_name : String,
-		role      : {bitMask:Number,title:String}
+		email    : String,
+		username : String,
+		password : String,
+		firstname: String,
+		lastname : String,
+		role     : {bitMask:Number,title:String}
 
 });
 

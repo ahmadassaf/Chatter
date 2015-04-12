@@ -2,6 +2,7 @@ define(['./module'], function(controllers) {
 	'use strict';
 	controllers.controller('register', ['$rootScope', '$scope', '$state', 'authentication', function ($rootScope, $scope, $state, authentication) {
 
+            $scope.username            = "";
             $scope.firstname           = "";
             $scope.lastname            = "";
             $scope.email               = "";
@@ -15,7 +16,6 @@ define(['./module'], function(controllers) {
                   	email    : $scope.email,
                   	firstName: $scope.firstname,
                   	lastName : $scope.lastname,
-                  	gender   : $scope.gender,
                   	password : $scope.password
 
                   },
