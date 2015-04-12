@@ -115,9 +115,12 @@ define(['./module', 'classie'], function(services, classie) {
 			    }
     		},
 
-    		changeBodyStyling: function() {
-    			document.body.style.background = '#fff'
-    			document.body.style.color = '#000';
+    		activateChatStyling: function() {
+					document.body.className += ' ' + 'chatBody';
+    		},
+
+    		deactivateChatStyling: function() {
+    			document.body.className = document.body.className.replace("chatBody","");
     		}
 
     	}

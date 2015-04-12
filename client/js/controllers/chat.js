@@ -12,7 +12,7 @@ define(['./module', 'underscore'], function(controllers, _) {
         io              = socket;
         currentUser     = authentication.user;
 
-        UI.changeBodyStyling();
+        UI.activateChatStyling();
 
         // Get the list of connected users and then join the list
         socket.emit('init', currentUser, function (init) {

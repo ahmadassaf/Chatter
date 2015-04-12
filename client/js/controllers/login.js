@@ -30,6 +30,7 @@ define(['./module', 'svg'], function(controllers) {
     UI.activateOverlay($scope, $rootScope, Modernizr);
     UI.activateModal($scope);
     UI.activateFancyInput();
+    UI.deactivateChatStyling();
 
   }]);
 });
