@@ -7,6 +7,7 @@ define([
     'angular-route',
     'angular-cookies',
     'angular-ui-router',
+    'angular-moment',
     './controllers/index',
     './directives/index',
     './filters/index',
@@ -22,6 +23,7 @@ define([
         'app.directives',
         'app.filters',
         'ngRoute',
-        'ui.router'
+        'ui.router',
+        'angularMoment'
     ]);
 });

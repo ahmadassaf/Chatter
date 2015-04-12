@@ -15,7 +15,9 @@ require.config({
         'socketio'                : '../lib/socket.io-client/socket.io',
         'underscore'              : '../lib/underscore/underscore',
         'classie'                 : '../lib/misc/classie',
-        'svg'                     : '../lib/misc/snap.svg-min'
+        'svg'                     : '../lib/misc/snap.svg-min',
+        'moment'                  : '../lib/moment/moment',
+        'angular-moment'          : '../lib/angular-moment/angular-moment'
     },
 
     /**
@@ -27,6 +29,9 @@ require.config({
             exports: 'angular'
         },
         'angular-route': {
+            deps: ['angular']
+        },
+        'angular-moment': {
             deps: ['angular']
         },
         'angular-cookies': {

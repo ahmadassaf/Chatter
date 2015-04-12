@@ -13,8 +13,9 @@ define(['./module', 'underscore'], function(controllers, _) {
         currentUser     = authentication.user;
 
         // Get the list of connected users and then join the list
-        socket.emit('init', currentUser, function (users) {
-            $scope.users = users;
+        socket.emit('init', currentUser, function (init) {
+            $scope.users    = init.users;
+            $scope.messages = init.messages;
         });
 
         socket.on('user:join', function(user){
@@ -45,7 +46,8 @@ define(['./module', 'underscore'], function(controllers, _) {
             var message = {
                 sender      : currentUser.username,
                 initials    : currentUser.username.replace(/\W*(\w)\w*/g, '$1').toUpperCase(),
-                message     : $scope.message
+                message     : $scope.message,
+                timestamp   : new Date().getTime()
             };
             // Emit the message to the server side
             io.emit('chat', message);

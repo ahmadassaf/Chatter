@@ -4,6 +4,7 @@ var _          = require('underscore');
 module.exports = function(io) {
 
 	var connectedUsers = {};
+	var messages       = [];
 
 	io.on('connection', function (socket) {
 
@@ -17,9 +18,9 @@ module.exports = function(io) {
 			// Check if the user is not already connected and add him
 			if (_.has(connectedUsers, username)) {
 				// Send to the callback the list of connected users
-				fn(_.omit(connectedUsers,username));
+				fn({'connectedUsers' : _.omit(connectedUsers,username), 'messages': messages});
 			} else {
-				fn(connectedUsers);
+				fn({'connectedUsers' :connectedUsers, 'messages' : messages});
 				connectedUsers[username] = user;
 				// Broadcast a message for connected user on the new user joining
 			  socket.broadcast.emit('user:join', user);
@@ -28,6 +29,7 @@ module.exports = function(io) {
 		});
 
 		socket.on('chat', function(message){
+			messages.push(message);
 			socket.broadcast.emit('user:message', message);
 		});
 
@@ -37,7 +39,7 @@ module.exports = function(io) {
 			console.log(user.username + " has just left us. We have " +  _.size(connectedUsers) + " connected users now !" );
 		});
 
-		socket.emit('init', {'connectedUsers' : connectedUsers});
+		socket.emit('init', {'connectedUsers' : connectedUsers, 'messages' : messages});
 
 		console.log("We have " + _.size(connectedUsers) + " connected users now !" );
 	});

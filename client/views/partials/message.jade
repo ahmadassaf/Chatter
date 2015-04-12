@@ -4,7 +4,7 @@ span.chat-img(ng-class='message.sender | orient')
 	.header
 		small.text-muted
 			span.glyphicon.glyphicon-time
-				| 13 mins ago
+				span.timestamp(am-time-ago='message.timestamp')
 			strong.primary-font(data-ng-class='message.sender | orient') {{message.username}}
 	p
 		| {{message.message}}
