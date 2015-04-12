@@ -1,5 +1,5 @@
 .messagesList { width: 100%; height: 800px; overflow-y: auto; padding: 0 1em; box-sizing: border-box; }
-input#messageBox { height: 30px; width: 85%; font-size: 15px; border: none; padding: 5px; margin: 0 5px; }
+input#messageBox { height: 25px; width: 85%; font-size: 15px; border: none; padding: 5px; margin: 0 5px; border-bottom: 1px solid #ddd;}
 button#btn-chat { width: 9%; height: 40px; color: #fff; font-size: 15px; background: #2ecc71; padding: 5px; border: none; }
 .pos-left { float: left !important; }
 .pos-right { float: right !important; }
@@ -12,7 +12,7 @@ button#btn-chat { width: 9%; height: 40px; color: #fff; font-size: 15px; backgro
 .glyphicon { margin-right: 5px; }
 .glyphicon { position: relative; top: 1px; display: inline-block; font: normal normal normal 14px/1 FontAwesome; font-style: normal; font-weight: normal; line-height: 1; }
 .glyphicon-time:before { content: "\f017"; }
-strong.primary-font { color: #ecf0f1; text-transform: capitalize; }
+strong.primary-font { color: #B5ADAD; text-transform: capitalize; }
 ul.usersList { list-style: none; padding: 0; margin: 0; display: table; }
 ul.usersList li { display: inline-table; margin: 0 5px; }
 .chat li:last-of-type {border: none;}

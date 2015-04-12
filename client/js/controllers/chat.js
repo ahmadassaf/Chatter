@@ -4,13 +4,15 @@ define(['./module', 'underscore'], function(controllers, _) {
 
     var io, currentUser;
 
-	controllers.controller('chat', ['$rootScope', '$scope', '$state', 'authentication', 'socket', function ($rootScope, $scope, $state, authentication, socket) {
+	controllers.controller('chat', ['$rootScope', '$scope', '$state', 'authentication', 'socket', 'ui', function ($rootScope, $scope, $state, authentication, socket, UI) {
 
         $scope.messages = [];
         $scope.users    = {};
 
         io              = socket;
         currentUser     = authentication.user;
+
+        UI.changeBodyStyling();
 
         // Get the list of connected users and then join the list
         socket.emit('init', currentUser, function (init) {

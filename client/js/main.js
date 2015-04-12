@@ -12,6 +12,7 @@ require.config({
         'angular-translate-static': '../lib/angular-translate-loader-static-files/angular-translate-loader-static-files.min',
         'angular-cookies'         : '../lib/angular-cookies/angular-cookies',
         'angular-ui-router'       : '../lib/angular-ui-router/release/angular-ui-router',
+        'angular-sanitize'        : '../lib/angular-sanitize/angular-sanitize',
         'socketio'                : '../lib/socket.io-client/socket.io',
         'underscore'              : '../lib/underscore/underscore',
         'classie'                 : '../lib/misc/classie',
@@ -32,6 +33,9 @@ require.config({
             deps: ['angular']
         },
         'angular-moment': {
+            deps: ['angular']
+        },
+        'angular-sanitize': {
             deps: ['angular']
         },
         'angular-cookies': {

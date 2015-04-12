@@ -8,6 +8,7 @@ define([
     'angular-cookies',
     'angular-ui-router',
     'angular-moment',
+    'angular-sanitize',
     './controllers/index',
     './directives/index',
     './filters/index',
@@ -24,6 +25,7 @@ define([
         'app.filters',
         'ngRoute',
         'ui.router',
-        'angularMoment'
+        'angularMoment',
+        'ngSanitize'
     ]);
 });

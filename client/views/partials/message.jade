@@ -6,4 +6,4 @@ span.chat-img(ng-class='message.sender | orient')
 		small.text-muted(ng-class='message.sender | orient:false:true')
 			span.glyphicon.glyphicon-time
 				e.timestamp(am-time-ago='message.timestamp')
-	p {{message.message}}
+	div(ng-bind-html="message.message | linky:'_blank'")

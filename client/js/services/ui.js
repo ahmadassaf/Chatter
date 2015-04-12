@@ -113,6 +113,11 @@ define(['./module', 'classie'], function(services, classie) {
 			            classie.remove( ev.target.parentNode, 'input--filled' );
 			        }
 			    }
+    		},
+
+    		changeBodyStyling: function() {
+    			document.body.style.background = '#fff'
+    			document.body.style.color = '#000';
     		}
 
     	}
