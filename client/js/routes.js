@@ -107,21 +107,13 @@ define(['./app'], function (app) {
 
         $rootScope.$on("$stateChangeStart", function (event, toState, toParams, fromState, fromParams) {
 
-            if (!authentication.authorize(toState.data.access)) {
-                $rootScope.error = "Trying to access a route you don't have access to ?!";
-                event.preventDefault();
-            }
-
-            /*
-            if (!authentication.isLoggedIn()) {
-                $state.go('public.home');
-            }
-
-            if (fromState.name === "" && authentication.isLoggedIn()) {
+            if (toState.name !== "user.chat" && authentication.isLoggedIn()) {
                 $state.go('user.chat');
                 event.preventDefault();
+            } else if (!authentication.authorize(toState.data.access)) {
+                 $state.go('public.home');
+                event.preventDefault();
             }
-            */
 
         });
     }]);
