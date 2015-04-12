@@ -7,7 +7,7 @@ define(['./module', 'underscore'], function(controllers, _) {
 	controllers.controller('chat', ['$rootScope', '$scope', '$state', 'authentication', 'socket', function ($rootScope, $scope, $state, authentication, socket) {
 
         $scope.messages = [];
-        $scope.users    = {"ahmad" : {"initials" : "AA"}};
+        $scope.users    = {};
 
         io              = socket;
         currentUser     = authentication.user;
@@ -19,7 +19,6 @@ define(['./module', 'underscore'], function(controllers, _) {
         });
 
         socket.on('user:join', function(user){
-            console.log($scope.users);
             $scope.users[user.username] = user;
         });
 
@@ -46,7 +45,6 @@ define(['./module', 'underscore'], function(controllers, _) {
             // Prepare the message object to be sent to the server and rendered on the frontend
             var message = {
                 sender      : currentUser.username,
-                initials    : currentUser.username.replace(/\W*(\w)\w*/g, '$1').toUpperCase(),
                 message     : $scope.message,
                 timestamp   : new Date().getTime()
             };

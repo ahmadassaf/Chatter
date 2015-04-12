@@ -2,7 +2,7 @@
   ul.usersList
     li.clearfix(data-ng-repeat='user in users')
       div.circular
-        img.img-circle(data-ng-src='http://placehold.it/50/FA6F57/fff&text={{user.initials}}', alt='User Avatar')
+        img.img-circle(ng-src='{{user.username | badge}}', alt='User Avatar')
   .messagesList
     ul.chat(id="chatBox")
       li.clearfix(ng-class="message.sender | orient:(true)", data-ng-repeat='message in messages')

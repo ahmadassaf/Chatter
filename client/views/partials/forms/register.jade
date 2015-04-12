@@ -4,7 +4,7 @@
 form.registrationForm(data-ng-submit="register()", name="registerForm", role="form")
     .form-group
         span.input.input--isao
-          input#username.input__field.input__field--isao(type='text', data-ng-model="username", name="username", required, data-ng-minlength="1", data-ng-maxlength="20", autofocus)
+          input#username.input__field.input__field--isao(type='text', data-ng-model="username", name="username", required, data-ng-minlength="1", data-ng-maxlength="20", autofocus,ng-trim="false" ng-change="username = username.split(' ').join('')")
           label.input__label.input__label--isao(for='username', data-content='Username')
             span.input__label-content.input__label-content--isao Username
 
@@ -16,13 +16,13 @@ form.registrationForm(data-ng-submit="register()", name="registerForm", role="fo
 
     .form-group
         span.input.input--isao
-          input#firstname.input__field.input__field--isao(type='text', data-ng-model="firstname", name="firstname", required, data-ng-minlength="1", data-ng-maxlength="20")
+          input#firstname.input__field.input__field--isao.capitalized(type='text', data-ng-model="firstname", name="firstname", required, data-ng-minlength="1", data-ng-maxlength="20")
           label.input__label.input__label--isao(for='firstname', data-content='First Name')
             span.input__label-content.input__label-content--isao First Name
 
     .form-group
         span.input.input--isao
-          input#lastname.input__field.input__field--isao(type='text', data-ng-model="lastname", name="lastname", required, data-ng-minlength="1", data-ng-maxlength="20")
+          input#lastname.input__field.input__field--isao.capitalized(type='text', data-ng-model="lastname", name="lastname", required, data-ng-minlength="1", data-ng-maxlength="20")
           label.input__label.input__label--isao(for='lastname', data-content='Last Name')
             span.input__label-content.input__label-content--isao Last Name
     .form-group
