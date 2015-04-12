@@ -4,6 +4,7 @@
 @import "chat.css";
 
 @import url(http://fonts.googleapis.com/css?family=Droid+Sans);
+@import url(http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300);
 
 /* Utilitiy classes */
 .clearfix:before, .clearfix:after { display: table; content: " "; }
@@ -13,7 +14,7 @@
 
 /* Mainn Skeleton */
 body { overflow-x: hidden; margin: 0; padding: 0; height: 100%; background: #34495e; color: #fff; }
-body * { font-family: 'Droid Sans', sans-serif; }
+body * { font-family: 'Open Sans Condensed', sans-serif; }
 .wrap { position: relative; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; border-top: 5px solid #16a085; height: 100%; }
 .container_inner, .container { top: 20px; width: 80%; margin: 0 auto; min-width: 650px; height: 100%; }
 
@@ -35,8 +36,9 @@ body * { font-family: 'Droid Sans', sans-serif; }
 
 /* Main page Content */
 .slogan {text-align: center;margin: 8em 0px;}
-.slogan h1 { color: #fff; font: 300 56px/120% "Open Sans", sans-serif; padding-bottom: 60px; line-height: 1.3em; margin: 0 auto; width: 90%; }
-.slogan h1 span { color: #3498db; margin: 0 10px; }
+.slogan h1 { font-family: 'Droid Sans'; color: #fff; font: 300 56px/120% "Open Sans", sans-serif; padding-bottom: 60px; line-height: 1.3em; margin: 0 auto; width: 90%; }
+.slogan h1 span { font-family: 'Droid Sans'; color: #3498db; margin: 0 10px; }
+h1 strong { margin: 0 15px 0 0; font-family: 'Droid Sans';}
 
 /* Buttons Styles */
 .button { position: relative; display: inline-block; padding: 0 60px; outline: none; border: none; color: #fff; border: 2px solid #fff; background: #1abc9c; text-transform: uppercase; letter-spacing: 1px; font-size: 1em; line-height: 4; margin: 5px 10px; cursor: pointer; }
@@ -58,7 +60,6 @@ body * { font-family: 'Droid Sans', sans-serif; }
 .infoBox ul li { margin: 5px; position: relative; clear: both; min-height: 0; color: #f1c40f; list-style: none; text-align: center; }
 
 /* General Styling */
-h1 strong { margin: 0 15px 0 0; }
 e { font-weight: 200; margin: 0 10px }
 small { font-size: 85%; }
 input:required {box-shadow:none;}

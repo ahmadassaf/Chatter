@@ -2,9 +2,8 @@ span.chat-img(ng-class='message.sender | orient')
 	img.img-circle(data-ng-src='http://placehold.it/50/FA6F57/fff&text={{message.initials}}', alt='User Avatar')
 .chat-body.clearfix
 	.header
-		small.text-muted
+		strong.primary-font(ng-class='message.sender | orient') {{message.sender}}
+		small.text-muted(ng-class='message.sender | orient:false:true')
 			span.glyphicon.glyphicon-time
-				span.timestamp(am-time-ago='message.timestamp')
-			strong.primary-font(data-ng-class='message.sender | orient') {{message.username}}
-	p
-		| {{message.message}}
+				e.timestamp(am-time-ago='message.timestamp')
+	p {{message.message}}

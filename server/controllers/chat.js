@@ -39,9 +39,8 @@ module.exports = function(io) {
 			console.log(user.username + " has just left us. We have " +  _.size(connectedUsers) + " connected users now !" );
 		});
 
-		socket.emit('init', {'connectedUsers' : connectedUsers, 'messages' : messages});
-
 		console.log("We have " + _.size(connectedUsers) + " connected users now !" );
+
 	});
 
 };

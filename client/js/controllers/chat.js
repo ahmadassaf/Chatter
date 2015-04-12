@@ -7,18 +7,19 @@ define(['./module', 'underscore'], function(controllers, _) {
 	controllers.controller('chat', ['$rootScope', '$scope', '$state', 'authentication', 'socket', function ($rootScope, $scope, $state, authentication, socket) {
 
         $scope.messages = [];
-        $scope.users    = {};
+        $scope.users    = {"ahmad" : {"initials" : "AA"}};
 
         io              = socket;
         currentUser     = authentication.user;
 
         // Get the list of connected users and then join the list
         socket.emit('init', currentUser, function (init) {
-            $scope.users    = init.users;
+            $scope.users    = init.connectedUsers;
             $scope.messages = init.messages;
         });
 
         socket.on('user:join', function(user){
+            console.log($scope.users);
             $scope.users[user.username] = user;
         });
 
