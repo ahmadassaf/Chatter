@@ -26,6 +26,7 @@ Following a set of best practices before, the folders are organized in the follo
 │   ├── translate
 │   └── views
 │       └── partials
+├── configs
 └── server
     ├── controllers
     ├── models
@@ -44,6 +45,32 @@ To better organize the front-end code, we are using [Require.js](http://requirej
 - Better code organizations into **modules**
 - Asynchronous JavaScript loading (AMD)
 - Compile and minify JavaScript into a single file
+
+The main folders are:
+- **Directives**: Hold custom Angular.js directives like the directives to handle navigation and visibility of various UI elements
+- **Filters**: Hold the Angular.js filters. For example, formatting certain input, adding links to URLs in text, etc.
+- **Services**: Handle the communication with the server side
+- **Controllers**: The main Angular.js controllers
+
+## Running the application
+
+After cloning the application locally, run two commands:
+
+- `npm install` to install the node.js dependencies defined in `package.json`
+- `bower install` to install client side dependencies defined in `bower.json`
+- Make sure you have MongoDB installed and an instance running
+- Start the server by running `node server.js`
+- Navigate to the browser to the address `http://localhost:8080`
+
+## User Interface
+
+![chatter_me_homepage](https://www.dropbox.com/s/bmposttkp9skfvs/chatter.me_homepage.png?dl=1)
+
+You can register and login from this page. Unauthorized people will be always redirected to this login page. User after being logged in, will have a cookie stored locally that is verified on each server request and will be always redirected to the chat screen.
+
+![chatter_me_chatting](https://www.dropbox.com/s/bmxtbcoyrkzcvnd/chatter.me_chat_interface.png?dl=1)
+
+Logged in users have a badge that shows in the top. Users can communicate with each other via the message box. For each session, the messages are persisted on the server (not on the DB at the moment) and new users will be able to have the whole chat history.
 
 ### References
 
