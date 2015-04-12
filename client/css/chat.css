@@ -12,7 +12,7 @@ button#btn-chat { width: 9%; height: 40px; color: #fff; font-size: 15px; backgro
 .glyphicon { margin-right: 5px; }
 .glyphicon { position: relative; top: 1px; display: inline-block; font: normal normal normal 14px/1 FontAwesome; font-style: normal; font-weight: normal; line-height: 1; }
 .glyphicon-time:before { content: "\f017"; }
-strong.primary-font { color: #B5ADAD; text-transform: capitalize; }
+strong.primary-font { color: #B5ADAD; text-transform: capitalize; margin: 0 10px 0 0;}
 ul.usersList { list-style: none; padding: 0; margin: 0; display: table; }
 ul.usersList li { display: inline-table; margin: 0 5px; }
 .chat li:last-of-type {border: none;}
