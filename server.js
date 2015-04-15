@@ -1,7 +1,7 @@
 var express  = require('express');
 var mongoose = require('mongoose');
 var passport = require('passport');
-var socket   = require('socket.io')
+var socket   = require('socket.io');
 
 var app      = express();
 
@@ -22,5 +22,3 @@ var io = socket.listen(app.listen(port));
 require('./server/routes.js')(app, passport, io);
 
 exports = module.exports = app;
-
-console.log('Chatter Application up and running on port: ' + port);

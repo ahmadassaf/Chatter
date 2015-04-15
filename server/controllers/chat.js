@@ -20,7 +20,7 @@ module.exports = function(io) {
 				connectedUsers[user.username] = user;
 				// Broadcast a message for connected user on the new user joining
 			  socket.broadcast.emit('user:join', user);
-			  console.log(user.username + " has just joined us. We have " +  _.size(connectedUsers) + " connected users now !" );
+			  //console.log(user.username + " has just joined us. We have " +  _.size(connectedUsers) + " connected users now !" );
 			}
 		});
 
@@ -32,10 +32,10 @@ module.exports = function(io) {
 		socket.on('user:leave', function(user){
 			connectedUsers = _.omit(connectedUsers, user.username);
 			socket.broadcast.emit('user:leave', user);
-			console.log(user.username + " has just left us. We have " +  _.size(connectedUsers) + " connected users now !" );
+			//console.log(user.username + " has just left us. We have " +  _.size(connectedUsers) + " connected users now !" );
 		});
 
-		console.log("We have " + _.size(connectedUsers) + " connected users now !" );
+		//console.log("We have " + _.size(connectedUsers) + " connected users now !" );
 
 	});
 
