@@ -62,6 +62,30 @@ After cloning the application locally, run two commands:
 - Start the server by running `node server.js`
 - Navigate to the browser to the address `http://localhost:8080`
 
+## Running Tests
+
+[Mocha](mochajs.org) is used to run some unit tests. The test we apply are:
+
+```
+  chatterme
+    Authentication
+GET / 200 224ms - 849b
+      ✓ should be running with status code 200 (243ms)
+POST /register 200 72ms - 37b
+      ✓ should return success trying to register a new user (82ms)
+POST /register 409 6ms - 19b
+      ✓ should return error trying to register an existing user 
+POST /login 200 49ms - 37b
+      ✓ should return success trying to login an existing user (50ms)
+POST /login 401 2ms - 13b
+      ✓ should return error trying to login non existing user 
+    Chat
+      ✓ Should broadcast new user once they connect 
+      ✓ Should broadcast new messages betwen users 
+      ✓ Should broadcast when a user leave the room 
+```
+to run the tests simply execute `mocha` on the root folder of the application
+
 ## User Interface
 
 ![chatter_me_homepage](https://www.dropbox.com/s/bmposttkp9skfvs/chatter.me_homepage.png?dl=1)
