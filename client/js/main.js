@@ -15,8 +15,8 @@ require.config({
         'angular-sanitize'        : '../lib/angular-sanitize/angular-sanitize',
         'socketio'                : '../lib/socket.io-client/socket.io',
         'underscore'              : '../lib/underscore/underscore',
-        'classie'                 : '../lib/misc/classie',
-        'svg'                     : '../lib/misc/snap.svg-min',
+        'classie'                 : '../components/js/classie',
+        'svg'                     : '../lib/snap.svg/dist/snap.svg-min',
         'moment'                  : '../lib/moment/moment',
         'angular-moment'          : '../lib/angular-moment/angular-moment'
     },
@@ -48,7 +48,7 @@ require.config({
 
     deps: [
         './bootstrap',
-        '../lib/misc/modernizr.js'
+        '../lib/modernizr/modernizr.js'
     ],
     urlArgs: "bust=" + (new Date()).getTime()
 });
