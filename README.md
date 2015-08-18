@@ -88,11 +88,11 @@ to run the tests simply execute `mocha` on the root folder of the application
 
 ## User Interface
 
-![chatter_me_homepage](https://www.dropbox.com/s/bmposttkp9skfvs/chatter.me_homepage.png?dl=1)
+![chatter_me_homepage](https://www.dropbox.com/s/xazjmhw7odxo1d3/chatter.me_homepage.png?dl=1)
 
 You can register and login from this page. Unauthorized people will be always redirected to this login page. User after being logged in, will have a cookie stored locally that is verified on each server request and will be always redirected to the chat screen.
 
-![chatter_me_chatting](https://www.dropbox.com/s/bmxtbcoyrkzcvnd/chatter.me_chat_interface.png?dl=1)
+![chatter_me_chatting](https://www.dropbox.com/s/jb9o8d03sea2rdl/chatter.me_chat_interface.png?dl=1)
 
 Logged in users have a badge that shows in the top. Users can communicate with each other via the message box. For each session, the messages are persisted on the server (not on the DB at the moment) and new users will be able to have the whole chat history.
 
